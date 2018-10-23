@@ -2,15 +2,15 @@ class Board :
 
     def initializeBoard(self):
         """
-        Function that return a table[8][8] full of 0
-        When a piece is inside a square, the 0 is swapped by the ID 
+        Function that return a table[8][8] full of None
+        When a piece is inside a square, we swap the None at those coordonate with the name of the piece
         """
         board = []
         for i in range(0,8):
             board += [[]]
             for j in range(0,8):
-                board[i] += [0]
-        print(board)
+                board[i] += [None]
+        return(board)
 
 
 
@@ -19,6 +19,7 @@ class Piece :
 
 class Pawn(Piece) :
     pass
+
 class King(Piece) :
     pass
 
@@ -35,4 +36,4 @@ class Rook(Piece) :
     pass
 
 board1= Board()
-board1.initializeBoard()
+print(board1.initializeBoard())
