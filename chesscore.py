@@ -1,4 +1,5 @@
-class Board :
+class Board(object) :
+    plateau = initializeBoard()
 
     def initializeBoard(self):
         """
@@ -14,7 +15,7 @@ class Board :
 
 
 
-class Piece :
+class Piece(object) :
     pass
 
 class Pawn(Piece) :
