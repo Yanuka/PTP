@@ -1,6 +1,5 @@
 class Board(object) :
-    plateau = initializeBoard()
-
+    
     def initializeBoard(self):
         """
         Function that returns an 8 by 8 table filled with dummy values
