@@ -3,8 +3,8 @@ class Board(object) :
 
     def initializeBoard(self):
         """
-        Function that return a table[8][8] full of None
-        When a piece is inside a square, we swap the None at those coordonate with the name of the piece
+        Function that returns an 8 by 8 table filled with dummy values
+        We replace these dummy values with the pieces' coordinates when the piece is moved
         """
         board = []
         for i in range(0,8):
