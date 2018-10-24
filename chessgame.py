@@ -1,7 +1,6 @@
 import chesscore
 
 print("Hello and welcome to Chess !")
-input("Press a key to start : ")
 print("————————————————————————————————————————————————")
 print("|  1  |  2  |  3  |  4  |  5  |  6  |  7  |  8  |")
 print("————————————————————————————————————————————————")
@@ -19,3 +18,5 @@ print("|  1  |  2  |  3  |  4  |  5  |  6  |  7  |  8  |")
 print("————————————————————————————————————————————————")
 print("|  1  |  2  |  3  |  4  |  5  |  6  |  7  |  8  |")
 print("————————————————————————————————————————————————")
+print("Select the piece you want to move and enter the coordinates to where you want to move it to")
+input(coordX,coordY)
