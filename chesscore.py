@@ -1,9 +1,27 @@
 class Board(object) :
-    
-    def initializeBoard(self):
+
+    def initialize(self):
         """
         Function that returns an 8 by 8 table filled with dummy values
         We replace these dummy values with the pieces' coordinates when the piece is moved
+        print("————————————————————————————————————————————————")
+        print("|  1  |  2  |  3  |  4  |  5  |  6  |  7  |  8  |")
+        print("————————————————————————————————————————————————")
+        print("|  1  |  2  |  3  |  4  |  5  |  6  |  7  |  8  |")
+        print("————————————————————————————————————————————————")
+        print("|  1  |  2  |  3  |  4  |  5  |  6  |  7  |  8  |")
+        print("————————————————————————————————————————————————")
+        print("|  1  |  2  |  3  |  4  |  5  |  6  |  7  |  8  |")
+        print("————————————————————————————————————————————————")
+        print("|  1  |  2  |  3  |  4  |  5  |  6  |  7  |  8  |")
+        print("————————————————————————————————————————————————")
+        print("|  1  |  2  |  3  |  4  |  5  |  6  |  7  |  8  |")
+        print("————————————————————————————————————————————————")
+        print("|  1  |  2  |  3  |  4  |  5  |  6  |  7  |  8  |")
+        print("————————————————————————————————————————————————")
+        print("|  1  |  2  |  3  |  4  |  5  |  6  |  7  |  8  |")
+        print("————————————————————————————————————————————————")
+        test
         """
         board = []
         for i in range(0,8):
@@ -11,6 +29,13 @@ class Board(object) :
             for j in range(0,8):
                 board[i] += [None]
         return(board)
+
+    def draw(self,board):
+        for i in board:
+            print("————————————————————————————————————————————————")
+            for j in board:
+                print("|  " + j + "  ")
+        pass
 
 
 
@@ -34,6 +59,3 @@ class Knight(Piece) :
 
 class Rook(Piece) :
     pass
-
-board1= Board()
-print(board1.initializeBoard())
