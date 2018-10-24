@@ -1,4 +1,4 @@
-import chesscore
+from chesscore import *
 
 board = Board()
 actualBoard = board.initialize()
