@@ -4,24 +4,6 @@ class Board(object) :
         """
         Function that returns an 8 by 8 table filled with dummy values
         We replace these dummy values with the pieces' coordinates when the piece is moved
-        print("————————————————————————————————————————————————")
-        print("|  1  |  2  |  3  |  4  |  5  |  6  |  7  |  8  |")
-        print("————————————————————————————————————————————————")
-        print("|  1  |  2  |  3  |  4  |  5  |  6  |  7  |  8  |")
-        print("————————————————————————————————————————————————")
-        print("|  1  |  2  |  3  |  4  |  5  |  6  |  7  |  8  |")
-        print("————————————————————————————————————————————————")
-        print("|  1  |  2  |  3  |  4  |  5  |  6  |  7  |  8  |")
-        print("————————————————————————————————————————————————")
-        print("|  1  |  2  |  3  |  4  |  5  |  6  |  7  |  8  |")
-        print("————————————————————————————————————————————————")
-        print("|  1  |  2  |  3  |  4  |  5  |  6  |  7  |  8  |")
-        print("————————————————————————————————————————————————")
-        print("|  1  |  2  |  3  |  4  |  5  |  6  |  7  |  8  |")
-        print("————————————————————————————————————————————————")
-        print("|  1  |  2  |  3  |  4  |  5  |  6  |  7  |  8  |")
-        print("————————————————————————————————————————————————")
-        test
         """
         board =[]
         for i in range(0,8):
@@ -64,11 +46,3 @@ class Knight(Piece) :
 
 class Rook(Piece) :
     pass
-
-
-board = Board()
-actualBoard = board.initialize()
-board.draw(actualBoard)
-
-print("Hello and welcome to Chess !")
-board.draw()
