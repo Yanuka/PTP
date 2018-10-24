@@ -1,4 +1,4 @@
 import chesscore
 
 print("Hello and welcome to Chess !")
-print("Press a key to start")
+input("Press a key to start")
