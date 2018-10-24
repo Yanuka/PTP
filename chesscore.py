@@ -23,19 +23,22 @@ class Board(object) :
         print("————————————————————————————————————————————————")
         test
         """
-        board = []
+        board =[]
         for i in range(0,8):
             board += [[]]
             for j in range(0,8):
-                board[i] += [None]
+                board[i] += [0]
         return(board)
 
     def draw(self,board):
+        count=0
         for i in board:
+            print("")
             print("————————————————————————————————————————————————")
-            for j in board:
-                print("|  " + j + "  ")
-        pass
+            for j in i:
+                print("| " , j , " ", end='')
+        print()
+        return (0)
 
 
 
@@ -59,3 +62,11 @@ class Knight(Piece) :
 
 class Rook(Piece) :
     pass
+
+
+board = Board()
+actualBoard = board.initialize()
+board.draw(actualBoard)
+
+print("Hello and welcome to Chess !")
+board.draw()
