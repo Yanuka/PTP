@@ -31,13 +31,15 @@ class Board(object) :
         return(board)
 
     def draw(self,board):
-        count=0
         for i in board:
-            print("")
+            count=0
             print("————————————————————————————————————————————————")
             for j in i:
+                count+=1
                 print("| " , j , " ", end='')
-        print()
+                if count == 8:
+                    print("|")
+        print("————————————————————————————————————————————————")
         return (0)
 
 
