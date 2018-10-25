@@ -13,7 +13,9 @@ while end != True:
     else:
         print("Player 2's turn")
     board.draw()
-    print("Select the piece you want to move and enter the coordinates to where you want to move it to")
+    print("Select the piece you want to move")
+    selectedPiece = input()
+    print("Enter the coordinates to where you want to move it to")
     coordX = input()
     coordY = input()
     print("\033[H\033[J")
