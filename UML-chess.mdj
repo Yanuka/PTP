@@ -2794,13 +2794,30 @@
 											"height": 13,
 											"text": "#initializeBoard()",
 											"horizontalAlignment": 0
+										},
+										{
+											"_type": "UMLOperationView",
+											"_id": "AAAAAAFmq1kblAGBZ1Q=",
+											"_parent": {
+												"$ref": "AAAAAAFmIHYlCW9gwD0="
+											},
+											"model": {
+												"$ref": "AAAAAAFmq1kbfQF7meY="
+											},
+											"font": "Arial;13;0",
+											"left": 421,
+											"top": 271,
+											"width": 97.1826171875,
+											"height": 13,
+											"text": "#draw()",
+											"horizontalAlignment": 0
 										}
 									],
 									"font": "Arial;13;0",
 									"left": 416,
 									"top": 251,
 									"width": 107.1826171875,
-									"height": 23
+									"height": 38
 								},
 								{
 									"_type": "UMLReceptionCompartmentView",
@@ -4194,6 +4211,15 @@
 								"$ref": "AAAAAAFmIHYlCG9XWQs="
 							},
 							"name": "initializeBoard",
+							"visibility": "protected"
+						},
+						{
+							"_type": "UMLOperation",
+							"_id": "AAAAAAFmq1kbfQF7meY=",
+							"_parent": {
+								"$ref": "AAAAAAFmIHYlCG9XWQs="
+							},
+							"name": "draw",
 							"visibility": "protected"
 						}
 					]
