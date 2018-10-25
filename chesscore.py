@@ -1,13 +1,13 @@
 class Board(object) :
 
-    def __init__(self):
+    def __init__(self): #Creates the board
         self.currentBoard = []
         for i in range(0,8):
             self.currentBoard += [[]]
             for j in range(0,8):
                 self.currentBoard[i] += [' ']
 
-    def draw(self):
+    def draw(self): #Draws the board
         print("        1     2     3     4     5     6     7     8")
         coun = 1
         for i in self.currentBoard:
@@ -24,7 +24,7 @@ class Board(object) :
         print("     —————————————————————————————————————————————————")
         return (0)
 
-    def update(self,selectedPieceX,selectedPieceY,selectedCoordX,selectedCoordY,pieceName) :
+    def update(self,selectedPieceX,selectedPieceY,selectedCoordX,selectedCoordY,pieceName) : #Updates the board
         self.currentBoard[selectedPieceX][selectedPieceY] = ' '
         self.currentBoard[selectedCoordX][selectedCoordY] = pieceName
 
