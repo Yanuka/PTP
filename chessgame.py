@@ -5,11 +5,11 @@ board = Board()
 actualBoard = board.initialize()
 
 print("Hello and welcome to Chess !")
-playerOne = False
+currentPlayerIsOne = True
 end = False
 while end != True:
 
-    if playerOne == False:
+    if currentPlayerIsOne == True:
         print("Player 1's turn")
     else:
         print("Player 2's turn")
@@ -18,7 +18,7 @@ while end != True:
     coordX = input()
     coordY = input()
     print("\033[H\033[J")
-    if playerOne == True:
-        playerOne = False
+    if currentPlayerIsOne == False:
+        currentPlayerIsOne = True
     else:
-        playerOne = True
+        currentPlayerIsOne = False
