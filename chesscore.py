@@ -5,7 +5,7 @@ class Board(object) :
         for i in range(0,8):
             self.currentBoard += [[]]
             for j in range(0,8):
-                self.currentBoard[i] += [0]
+                self.currentBoard[i] += [' ']
 
     def draw(self):
         for i in self.currentBoard:
@@ -19,7 +19,7 @@ class Board(object) :
         print("————————————————————————————————————————————————")
         return (0)
 
-
+#test"Morgan"
 
 class Piece(object) :
     pass
