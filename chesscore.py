@@ -8,15 +8,20 @@ class Board(object) :
                 self.currentBoard[i] += [' ']
 
     def draw(self):
+        print("        1     2     3     4     5     6     7     8")
+        coun = 1
         for i in self.currentBoard:
             count=0
-            print("————————————————————————————————————————————————")
+            print("     —————————————————————————————————————————————————")
             for j in i:
                 count+=1
+                if count == 1:
+                    print(" ", coun, " ", end='')
+                    coun+=1
                 print("| " , j , " ", end='')
                 if count == 8:
                     print("|")
-        print("————————————————————————————————————————————————")
+        print("     —————————————————————————————————————————————————")
         return (0)
 
     def update(self,selectedPieceX,selectedPieceY,selectedCoordX,selectedCoordY,pieceName) :
