@@ -41,6 +41,3 @@ class Knight(Piece) :
 
 class Rook(Piece) :
     pass
-
-board1=Board()
-board1.draw()
