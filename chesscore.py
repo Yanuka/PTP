@@ -5,14 +5,13 @@ class Board(object) :
         for i in range(0,8):
             self.currentBoard += [[]]
             for j in range(0,8):
-                self.currentBoard[i] += [(i,j)]
+                self.currentBoard[i] += [' ']
 
     def draw(self):
-        for i in range(len(self.currentBoard)):
+        for i in self.currentBoard:
             count=0
             print("————————————————————————————————————————————————")
-            a = self.currentBoard[len(self.currentBoard)-i-1]
-            for j in a:
+            for j in i:
                 count+=1
                 print("| " , j , " ", end='')
                 if count == 8:
