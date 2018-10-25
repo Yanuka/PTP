@@ -1,9 +1,7 @@
 class Board(object) :
 
-	actualBoard = []
-
-	def initialize(self):
-		"""
+    def initialize(self):
+        """
         Function that returns an 8 by 8 table filled with dummy values
         We replace these dummy values with the pieces' coordinates when the piece is moved
         """
@@ -25,9 +23,6 @@ class Board(object) :
                     print("|")
         print("————————————————————————————————————————————————")
         return (0)
-
-	def __init__(self):
-    	actualBoard = initialize()
 
 
 
@@ -51,5 +46,3 @@ class Knight(Piece) :
 
 class Rook(Piece) :
     pass
-
-board= Board()
