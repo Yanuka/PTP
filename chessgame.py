@@ -17,8 +17,7 @@ while end != True:
     print("Select the piece you want to move and enter the coordinates to where you want to move it to")
     coordX = input()
     coordY = input()
-    os.system('cls')
-    os.system('clear')
+    print("\033[H\033[J")
     if playerOne == True:
         playerOne = False
     else:
