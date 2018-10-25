@@ -14,10 +14,11 @@ while end != True:
         print("Player 2's turn")
     board.draw()
     print("Select the piece you want to move")
-    selectedPiece = input()
+    selectedPieceX = input()
+    selectedPieceX = input()
     print("Enter the coordinates to where you want to move it to")
-    coordX = input()
-    coordY = input()
+    selectedCoordX = input()
+    selectedCoordY = input()
     print("\033[H\033[J")
     if currentPlayerIsOne == False:
         currentPlayerIsOne = True
