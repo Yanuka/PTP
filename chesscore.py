@@ -1,7 +1,7 @@
 class Board(object) :
 
     def __init__(self):
-        self.currentBoard =[]
+        self.currentBoard = []
         for i in range(0,8):
             self.currentBoard += [[]]
             for j in range(0,8):
@@ -19,7 +19,9 @@ class Board(object) :
         print("————————————————————————————————————————————————")
         return (0)
 
-#test"Morgan"
+        def update(self,selectedPieceX,selectedPieceY,selectedCoordX,selectedCoordY,pieceName) :
+            self.currentBoard[selectedPieceX][selectedPieceY] = ' '
+            self.currentBoard[selectedCoordX][selectedCoordY] = pieceName
 
 class Piece(object) :
     pass
