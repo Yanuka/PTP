@@ -20,9 +20,9 @@ class Board(object) :
         print("————————————————————————————————————————————————")
         return (0)
 
-        def update(self,selectedPieceX,selectedPieceY,selectedCoordX,selectedCoordY,pieceName) :
-            self.currentBoard[selectedPieceX][selectedPieceY] = ' '
-            self.currentBoard[selectedCoordX][selectedCoordY] = pieceName
+    def update(self,selectedPieceX,selectedPieceY,selectedCoordX,selectedCoordY,pieceName) :
+        self.currentBoard[selectedPieceX][selectedPieceY] = ' '
+        self.currentBoard[selectedCoordX][selectedCoordY] = pieceName
 
 class Piece(object) :
     pass
