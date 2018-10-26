@@ -29,22 +29,35 @@ class Board(object) :
         self.currentBoard[selectedCoordX][selectedCoordY] = pieceName
 
 class Piece(object) :
+    isBlack = bool
     pass
 
 class Pawn(Piece) :
+    Pawn1 = "♙"
+    Pawn2 = "♟"
     pass
 
 class King(Piece) :
+    King1 = "♔"
+    King2 = "♚"
     pass
 
 class Queen(Piece) :
+    Queen1 = "♕"
+    Queen2 = "♛"
     pass
 
 class Bishop(Piece) :
+    Bishop1 = "♗"
+    Bishop2 = "♝"
     pass
 
 class Knight(Piece) :
+    Knight1 = "♘"
+    Knight2 = "♞"
     pass
 
 class Rook(Piece) :
+    Rook1 = "♖"
+    Rook2 = "♜"
     pass
