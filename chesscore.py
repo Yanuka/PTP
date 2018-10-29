@@ -1,3 +1,6 @@
+class supervisor() :
+    pass
+
 class Board(object) :
 
     def __init__(self): #Creates the board
@@ -29,35 +32,35 @@ class Board(object) :
         self.currentBoard[selectedCoordX][selectedCoordY] = pieceName
 
 class Piece(object) :
-    isBlack = bool
+    isBlack = 0
     pass
 
 class Pawn(Piece) :
-    Pawn1 = "♙"
-    Pawn2 = "♟"
+    Pawn1 = 'P'
+    Pawn2 = 'P'
     pass
 
 class King(Piece) :
-    King1 = "♔"
-    King2 = "♚"
+    King1 = 'K'
+    King2 = 'K'
     pass
 
 class Queen(Piece) :
-    Queen1 = "♕"
-    Queen2 = "♛"
+    Queen1 = 'Q'
+    Queen2 = 'Q'
     pass
 
 class Bishop(Piece) :
-    Bishop1 = "♗"
-    Bishop2 = "♝"
+    Bishop1 = 'B'
+    Bishop2 = 'B'
     pass
 
 class Knight(Piece) :
-    Knight1 = "♘"
-    Knight2 = "♞"
+    Knight1 = 'N'
+    Knight2 = 'N'
     pass
 
 class Rook(Piece) :
-    Rook1 = "♖"
-    Rook2 = "♜"
+    Rook1 = 'R'
+    Rook2 = 'R'
     pass

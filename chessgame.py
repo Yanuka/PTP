@@ -19,7 +19,7 @@ while end != True: #Plays the game until the game is ended
     selectedCoordY = int(input("Enter the Y coordinate to where you want to move it to : ")) - 1
 
     #C'est un bout de code test, je suis pas sur que ça fonctionne
-    board.update(selectedPieceX,selectedPieceY,selectedCoordX,selectedCoordY,pieceName)
+    #board.update(selectedPieceX,selectedPieceY,selectedCoordX,selectedCoordY,pieceName)
 
     print("\033[H\033[J") #Clears the display of the board
 
