@@ -12,15 +12,15 @@ class Board(object) :
 
     def draw(self): #Draws the board
         print("        1     2     3     4     5     6     7     8")
-        coun = 1
+        coordName = 1
         for i in self.currentBoard:
             count=0
             print("     —————————————————————————————————————————————————")
             for j in i:
                 count+=1
                 if count == 1:
-                    print(" ", coun, " ", end='')
-                    coun+=1
+                    print(" ", coordName, " ", end='')
+                    coordName+=1
                 print("| " , j , " ", end='')
                 if count == 8:
                     print("|")
