@@ -25,7 +25,6 @@ class Board(object) :
                 if count == 8:
                     print("|")
         print("     —————————————————————————————————————————————————")
-        return (0)
 
     def update(self,selectedPieceX,selectedPieceY,selectedCoordX,selectedCoordY,pieceName) : #Updates the board
         self.currentBoard[selectedPieceX][selectedPieceY] = ' '

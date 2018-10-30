@@ -2,6 +2,7 @@ from chesscore import * #Imports the core program
 
 board = Board() #Starts the game
 
+
 print("Hello and welcome to Chess !")
 currentPlayerIsOne = True
 end = False
