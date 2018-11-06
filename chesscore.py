@@ -1,4 +1,5 @@
 class supervisor() :
+
     pass
 
 class Board(object) :
@@ -31,7 +32,7 @@ class Board(object) :
         self.currentBoard[selectedCoordX][selectedCoordY] = pieceName
 
 class Piece(object) :
-    isBlack = 'bool'
+
     pass
 
 class Pawn(Piece) :
