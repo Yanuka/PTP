@@ -1,55 +1,14 @@
 class Board(object) :
-<<<<<<< HEAD
-
-    def __init__(self):
-        self.currentBoard =[]
-=======
     coordinates = []
     currentPlayerIsOne = True
 
     def __init__(self): #Creates the board
         self.currentBoard = []
->>>>>>> Developpement
         for i in range(0,8):
             self.currentBoard += [[]]
             for j in range(0,8):
                 self.currentBoard[i] += [' ']
 
-<<<<<<< HEAD
-    def draw(self):
-        for i in self.currentBoard:
-            count=0
-            print("————————————————————————————————————————————————")
-            for j in i:
-                count+=1
-                print("| " , j , " ", end='')
-                if count == 8:
-                    print("|")
-        print("————————————————————————————————————————————————")
-        return (0)
-
-#test"Morgan"
-
-class Piece(object) :
-    pass
-
-class Pawn(Piece) :
-    pass
-
-class King(Piece) :
-    pass
-
-class Queen(Piece) :
-    pass
-
-class Bishop(Piece) :
-    pass
-
-class Knight(Piece) :
-    pass
-
-class Rook(Piece) :
-=======
     def draw(self): #Draws the board
         if self.currentPlayerIsOne == True:
             print('Player ' + '\33[91m' + '1' + '\x1b[0m' + '\'s turn')
@@ -138,5 +97,4 @@ class Rook(Piece) :
 
 
 class supervisor() :
->>>>>>> Developpement
     pass
