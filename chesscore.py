@@ -2,7 +2,7 @@
 # @Date:   2018-11-13T15:45:48+01:00
 # @Email:  lucas.bretel@hotmail.fr
 # @Last modified by:   Lucas Bretel
-# @Last modified time: 2018-11-13T16:39:26+01:00
+# @Last modified time: 2018-11-13T17:46:55+01:00
 
 
 
@@ -32,44 +32,44 @@ class Board(object) :
                     print("|")
         print("     —————————————————————————————————————————————————")
 
+
 class Piece(object) :
-    color=""
+    def __init__(self,color):
+        self.color=color
 
 
-    pass
 
 class Pawn(Piece) :
-   pass
+   a=1
 
 class King(Piece) :
     King1 = 'K'
     King2 = 'K'
-    pass
+
 
 class Queen(Piece) :
     Queen1 = 'Q'
     Queen2 = 'Q'
-    pass
+
 
 class Bishop(Piece) :
     Bishop1 = 'B'
     Bishop2 = 'B'
-    pass
+
 
 class Knight(Piece) :
     Knight1 = 'N'
     Knight2 = 'N'
-    pass
+
 
 class Rook(Piece) :
     Rook1 = 'R'
     Rook2 = 'R'
-    pass
+
 
 class supervisor() :
 
-    def __init__(self):
-        Board = Board()
+    def __init__(self,boardName):
         whitePawn1 = Pawn("White")
         whitePawn2 = Pawn("White")
         whitePawn3 = Pawn("White")
@@ -102,6 +102,6 @@ class supervisor() :
         blackKnight2 = Knight("Black")
         blackRook1 = Rook("Black")
         blackRook2 = Rook("Black")
-        Board.coordinates[[whitePawn1,(2,2)]]
+        boardName.coordinates+=[whitePawn1,(2,2)]
 
     pass
