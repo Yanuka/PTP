@@ -9,6 +9,13 @@ class Board(object) :
                 self.currentBoard[i] += [' ']
 
     def draw(self): #Draws the board
+        currentPlayerIsOne = True
+        if currentPlayerIsOne == True:
+            print('Player ' + '\33[91m' + '1' + '\x1b[0m' + '\'s turn')
+            print()
+        else:
+            print('Player ' + '\33[94m' + '2' + '\x1b[0m' + '\'s turn')
+            print()
         print("        A     B     C     D     E     F     G     H")
         coordName = 1
         for i in self.currentBoard:
@@ -23,6 +30,11 @@ class Board(object) :
                 if count == 8:
                     print("|")
         print("     —————————————————————————————————————————————————")
+        
+        if currentPlayerIsOne == False:
+            currentPlayerIsOne = True
+        else:
+            currentPlayerIsOne = False
 
     def fetch(self):
         for piece in self.coordinates :
