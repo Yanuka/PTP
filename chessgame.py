@@ -9,9 +9,9 @@ end = False
 while end != True: #Plays the game until the game is ended
 
     if currentPlayerIsOne == True:
-        print("Player 1's turn\n")
+        print('Player ' + '\33[31m' + '1' + '\x1b[0m' + '\'s turn')
     else:
-        print("Player 2's turn\n")
+        print('Player ' + '\33[34m' + '2' + '\x1b[0m' + '\'s turn')
     board.draw() #Updates the current board display
     print()
     selectedPiece = input("Select the square of the piece you want to move : ") #Gets the square of the piece
