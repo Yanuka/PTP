@@ -4,6 +4,12 @@ currentPlayerIsOne = True
 end = False
 while end != True: #Plays the game until the game is ended
 
+    print("Hello and welcome to chess !\n")
+    print("Our chess game is inspired by the og chess game.\n")
+    print("Game designed by Lucas, Maxime, Joseph, Alexandre & Morgan\n")
+    input("Press enter to start the game...")
+    print("\033[H\033[J") #Clears the board
+
     if currentPlayerIsOne == True:
         print('Player ' + '\33[91m' + '1' + '\x1b[0m' + '\'s turn')
         print()
