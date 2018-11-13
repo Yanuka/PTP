@@ -38,7 +38,7 @@ class Pawn(Piece) :
    def __init__(self,color):
        self.color=color
        if self.color == "White":
-           self.dispayCharacter = '\33[31m' + 'P' + '\x1b[0m'
+           self.dispayCharacter = '\33[91m' + 'P' + '\x1b[0m'
        elif self.color == "Black":
            self.dispayCharacter = '\33[94m' + 'P' + '\x1b[0m'
 
@@ -47,7 +47,7 @@ class King(Piece) :
     def __init__(self,color):
         self.color=color
         if self.color == "White":
-            self.dispayCharacter = '\33[31m' + 'K' + '\x1b[0m'
+            self.dispayCharacter = '\33[91m' + 'K' + '\x1b[0m'
         elif self.color == "Black":
             self.dispayCharacter = '\33[94m' + 'K' + '\x1b[0m'
 
@@ -56,7 +56,7 @@ class Queen(Piece) :
     def __init__(self,color):
         self.color=color
         if self.color == "White":
-            self.dispayCharacter = '\33[31m' + 'Q' + '\x1b[0m'
+            self.dispayCharacter = '\33[91m' + 'Q' + '\x1b[0m'
         elif self.color == "Black":
             self.dispayCharacter = '\33[94m' + 'Q' + '\x1b[0m'
 
@@ -65,7 +65,7 @@ class Bishop(Piece) :
     def __init__(self,color):
         self.color=color
         if self.color == "White":
-            self.dispayCharacter = '\33[31m' + 'B' + '\x1b[0m'
+            self.dispayCharacter = '\33[91m' + 'B' + '\x1b[0m'
         elif self.color == "Black":
             self.dispayCharacter = '\33[94m' + 'B' + '\x1b[0m'
 
@@ -74,7 +74,7 @@ class Knight(Piece) :
     def __init__(self,color):
         self.color=color
         if self.color == "White":
-            self.dispayCharacter = '\33[31m' + 'N' + '\x1b[0m'
+            self.dispayCharacter = '\33[91m' + 'N' + '\x1b[0m'
         elif self.color == "Black":
             self.dispayCharacter = '\33[94m' + 'N' + '\x1b[0m'
 
@@ -83,7 +83,7 @@ class Rook(Piece) :
     def __init__(self,color):
         self.color=color
         if self.color == "White":
-            self.dispayCharacter = '\33[31m' + 'R' + '\x1b[0m'
+            self.dispayCharacter = '\33[91m' + 'R' + '\x1b[0m'
         elif self.color == "Black":
             self.dispayCharacter = '\33[94m' + 'R' + '\x1b[0m'
 
