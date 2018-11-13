@@ -14,10 +14,13 @@ while end != True: #Plays the game until the game is ended
         print("Player 2's turn\n")
     board.draw() #Updates the current board display
     print()
-    selectedPieceX = int(input("Select the X coordinate of the piece you want to move : ")) - 1
-    selectedPieceY = int(input("Select the Y coordinate of the piece you want to move : ")) - 1
-    selectedCoordX = int(input("Enter the X coordinate to where you want to move it to : ")) - 1
-    selectedCoordY = int(input("Enter the Y coordinate to where you want to move it to : ")) - 1
+    selectedPiece = input("Select the square of the piece you want to move")
+    selectedCoord = input("Select the square to where you want to move the piece")
+
+    selectedPieceX = selectedPiece
+    selectedPieceY = selectedPiece
+    selectedCoordX = selectedCoord
+    selectedCoordY = selectedCoord
 
     print("\033[H\033[J") #Clears the display of the board
 
