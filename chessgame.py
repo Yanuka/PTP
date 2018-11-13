@@ -16,13 +16,16 @@ while end != True: #Plays the game until the game is ended
     print()
     selectedPiece = input("Select the square of the piece you want to move : ")
     selectedCoord = input("Select the square to where you want to move the piece : ")
+    selectedPieceX = ord(selectedPiece[0]) - 65
+    selectedPieceY = int(selectedPiece[1]) - 1
+    selectedCoordX = ord(selectedCoord[0]) - 65
+    selectedCoordY = int(selectedCoord[1]) - 1
+    print(selectedPieceX)
+    print(selectedPieceY)
+    print(selectedCoordX)
+    print(selectedCoordY)
 
-    selectedPieceX = selectedPiece
-    selectedPieceY = selectedPiece
-    selectedCoordX = selectedCoord
-    selectedCoordY = selectedCoord
 
-    print("\033[H\033[J") #Clears the display of the board
 
     if currentPlayerIsOne == False:
         currentPlayerIsOne = True
