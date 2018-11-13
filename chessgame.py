@@ -23,18 +23,24 @@ while end != True: #Plays the game until the game is ended
     correctInputCoord=False
 
     while correctInputPiece==False :
-        selectedPiece = input("Select the square of the piece you want to move : ") #Gets the square of the piece
-        if len(selectedPiece)>2 or selectedPiece[0].isalpha()==False or selectedPiece[1].isdigit()==False :
+        selectedPiece = input("Select the square of the piece you want to move : ") #Gets the initial square
+        if len(selectedPiece)!=2 :
+            print("The value you have entered is incorrect")
+        elif selectedPiece[0].isalpha()==False or selectedPiece[1].isdigit()==False :
             print("The value you have entered is incorrect")
         else:
             correctInputPiece=True
 
+
     while correctInputCoord==False :
-        selectedCoord = input("Select the square to where you want to move the piece : ") #Gets the square of the coordinates
-        if len(selectedCoord)>2 or selectedCoord[0].isalpha()==False or selectedCoord[1].isdigit()==False :
+        selectedCoord = input("Select the square of where you want to move it to : ") #Gets the destination square
+        if len(selectedCoord)!=2 :
+            print("The value you have entered is incorrect")
+        elif selectedCoord[0].isalpha()==False or selectedCoord[1].isdigit()==False :
             print("The value you have entered is incorrect")
         else:
             correctInputCoord=True
+
 
     selectedPieceY = ord(selectedPiece[0]) - 65 #Converts the input into coordinates
     selectedPieceX = int(selectedPiece[1]) - 1
