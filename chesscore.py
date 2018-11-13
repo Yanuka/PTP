@@ -1,11 +1,3 @@
-# @Author: Lucas Bretel
-# @Date:   2018-11-13T15:45:48+01:00
-# @Email:  lucas.bretel@hotmail.fr
-# @Last modified by:   Lucas Bretel
-# @Last modified time: 2018-11-13T17:46:55+01:00
-
-
-
 class Board(object) :
     coordinates = []
 

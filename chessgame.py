@@ -1,11 +1,3 @@
-# @Author: Lucas Bretel
-# @Date:   2018-11-13T16:23:50+01:00
-# @Email:  lucas.bretel@hotmail.fr
-# @Last modified by:   Lucas Bretel
-# @Last modified time: 2018-11-13T17:39:05+01:00
-
-
-
 from chesscore import * #Imports the core program
 board = Board()
 supervisor = supervisor(board)
