@@ -24,6 +24,9 @@ class Board(object) :
                     print("|")
         print("     —————————————————————————————————————————————————")
 
+    def fetch(self):
+        for piece in self.coordinates :
+            self.currentBoard[piece[1][0]][piece[1][1]] = piece[0].dispayCharacter
 
 class Piece(object) :
     a=1
@@ -122,3 +125,4 @@ blackKnight2 = Knight("Black")
 blackRook1 = Rook("Black")
 blackRook2 = Rook("Black")
 board.coordinates+=[[whitePawn1,(0,1)],[whitePawn2,(1,1)],[whitePawn3,(2,1)],[whitePawn4,(3,1)],[whitePawn5,(4,1)],[whitePawn6,(5,1)],[whitePawn7,(6,1)],[whitePawn8,(7,1)],[whiteKing,(4,0)],[whiteQueen,(3,0)],[whiteBishop1,(2,0)],[whiteBishop2,(5,0)],[whiteKnight1,(1,0)],[whiteKnight2,(6,0)],[whiteRook1,(0,0)],[whiteRook2,(7,0)],[blackPawn1,(0,6)],[blackPawn2,(1,6)],[blackPawn3,(2,6)],[blackPawn4,(3,6)],[blackPawn5,(4,6)],[blackPawn6,(5,6)],[blackPawn7,(6,6)],[blackPawn8,(7,6)],[blackKing,(4,7)],[blackQueen,(3,7)],[blackBishop1,(2,7)],[blackBishop2,(5,7)],[blackKnight1,(1,7)],[blackKnight2,(6,7)],[blackRook1,(0,7)],[blackRook2,(7,7)]]
+board.fetch()
