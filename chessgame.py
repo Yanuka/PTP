@@ -8,7 +8,7 @@ while end != True: #Plays the game until the game is ended
         print('Player ' + '\33[31m' + '1' + '\x1b[0m' + '\'s turn')
         print()
     else:
-        print('Player ' + '\33[34m' + '2' + '\x1b[0m' + '\'s turn')
+        print('Player ' + '\33[94m' + '2' + '\x1b[0m' + '\'s turn')
         print()
     board.draw() #Updates the current board display
     print()
