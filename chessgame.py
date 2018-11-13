@@ -13,10 +13,10 @@ while end != True: #Plays the game until the game is ended
     board.draw() #Updates the current board display
     print()
     selectedPiece = input("Select the square of the piece you want to move : ") #Gets the square of the piece
-    if len(selectedPiece)>2 :
+    if len(selectedPiece)>2 or selectedPiece[0].isalpha()==False or selectedPiece[1].isdigit()==False :
         print("The value you have entered is incorrect")
     selectedCoord = input("Select the square to where you want to move the piece : ") #Gets the square of the coordinates
-    if len(selectedCoord)>2 :
+    if len(selectedCoord)>2 or selectedCoord[0].isalpha()==False or selectedCoord[1].isdigit()==False :
         print("The value you have entered is incorrect")
     selectedPieceX = ord(selectedPiece[0]) - 65 #Converts the input into coordinates
     selectedPieceY = int(selectedPiece[1]) - 1
