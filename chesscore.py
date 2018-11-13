@@ -1,11 +1,3 @@
-# @Author: Lucas Bretel
-# @Date:   2018-11-13T15:45:48+01:00
-# @Email:  lucas.bretel@hotmail.fr
-# @Last modified by:   Lucas Bretel
-# @Last modified time: 2018-11-13T17:46:55+01:00
-
-
-
 class Board(object) :
     coordinates = []
 
@@ -17,7 +9,7 @@ class Board(object) :
                 self.currentBoard[i] += [' ']
 
     def draw(self): #Draws the board
-        print("        A     B     C     D     E     F     G     F")
+        print("        A     B     C     D     E     F     G     H")
         coordName = 1
         for i in self.currentBoard:
             count=0
