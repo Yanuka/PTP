@@ -2,7 +2,7 @@
 # @Date:   2018-11-13T15:45:48+01:00
 # @Email:  lucas.bretel@hotmail.fr
 # @Last modified by:   Lucas Bretel
-# @Last modified time: 2018-11-13T16:00:52+01:00
+# @Last modified time: 2018-11-13T16:39:26+01:00
 
 
 
@@ -33,13 +33,13 @@ class Board(object) :
         print("     —————————————————————————————————————————————————")
 
 class Piece(object) :
+    color=""
+
 
     pass
 
 class Pawn(Piece) :
-    Pawn1 = 'P'
-    Pawn2 = 'P'
-    pass
+   pass
 
 class King(Piece) :
     King1 = 'K'
@@ -102,5 +102,6 @@ class supervisor() :
         blackKnight2 = Knight("Black")
         blackRook1 = Rook("Black")
         blackRook2 = Rook("Black")
+        Board.coordinates[[whitePawn1,(2,2)]]
 
     pass
