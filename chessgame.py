@@ -22,6 +22,8 @@ while end != True: #Plays the game until the game is ended
     selectedCoordX = ord(selectedCoord[0]) - 65
     selectedCoordY = int(selectedCoord[1]) - 1
 
+    print("\033[H\033[J") #Clears the board
+
     if currentPlayerIsOne == False:
         currentPlayerIsOne = True
     else:
