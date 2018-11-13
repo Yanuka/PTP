@@ -12,7 +12,7 @@ class Board(object) :
                 self.currentBoard[i] += [' ']
 
     def draw(self): #Draws the board
-        print("        1     2     3     4     5     6     7     8")
+        print("        A     B     C     D     E     F     G     F")
         coordName = 1
         for i in self.currentBoard:
             count=0

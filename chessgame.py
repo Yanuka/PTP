@@ -14,8 +14,8 @@ while end != True: #Plays the game until the game is ended
         print("Player 2's turn\n")
     board.draw() #Updates the current board display
     print()
-    selectedPiece = input("Select the square of the piece you want to move")
-    selectedCoord = input("Select the square to where you want to move the piece")
+    selectedPiece = input("Select the square of the piece you want to move : ")
+    selectedCoord = input("Select the square to where you want to move the piece : ")
 
     selectedPieceX = selectedPiece
     selectedPieceY = selectedPiece
