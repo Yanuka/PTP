@@ -1,7 +1,6 @@
 from chesscore import * #Imports the core program
-board = Board()
-supervisor = supervisor(board)
 
+"""
 print("Hello and welcome to Chess !")
 currentPlayerIsOne = True
 end = False
@@ -30,3 +29,4 @@ while end != True: #Plays the game until the game is ended
         currentPlayerIsOne = True
     else:
         currentPlayerIsOne = False
+"""
