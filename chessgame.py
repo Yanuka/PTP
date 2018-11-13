@@ -1,6 +1,4 @@
 from chesscore import * #Imports the core program
-board = Board()
-supervisor = supervisor(board)
 
 
 print("Hello and welcome to Chess !")
