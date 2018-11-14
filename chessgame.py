@@ -18,6 +18,7 @@ while end != True: #Plays the game until the game is ended
     while correctInputPiece==False :
         selectedPiece = input("Select the square of the piece you want to move : ") #Gets the initial square
         if len(selectedPiece)!=2 :
+            selectedPiece.upper()
             print("\033[H\033[J") #Clears the board
             board.draw() #Updates the current board display
             print("The value you have entered is incorrect")
@@ -32,6 +33,7 @@ while end != True: #Plays the game until the game is ended
     while correctInputCoord==False :
         selectedCoord = input("Select the square of where you want to move it to : ") #Gets the destination square
         if len(selectedCoord)!=2 :
+            selectedCoord.upper()
             print("\033[H\033[J") #Clears the board
             board.draw() #Updates the current board display
             print("The value you have entered is incorrect")
