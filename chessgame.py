@@ -43,6 +43,11 @@ while end != True: #Plays the game until the game is ended
             correctInputCoord=True
 
 
+    if board.currentPlayerIsOne == False:
+        board.currentPlayerIsOne = True
+    else:
+        board.currentPlayerIsOne = False
+
     selectedPieceY = ord(selectedPiece[0]) - 65 #Converts the input into coordinates
     selectedPieceX = int(selectedPiece[1]) - 1
     selectedCoordY = ord(selectedCoord[0]) - 65
