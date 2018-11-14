@@ -20,10 +20,12 @@ while end != True: #Plays the game until the game is ended
         selectedPiece = selectedPiece.capitalize()
         if len(selectedPiece)!=2 :
             print("\033[H\033[J") #Clears the board
+            board.fetch()
             board.draw() #Updates the current board display
             print("The value you have entered is incorrect")
         elif selectedPiece[0].isalpha()==False or selectedPiece[1].isdigit()==False :
             print("\033[H\033[J") #Clears the board
+            board.fetch()
             board.draw() #Updates the current board display
             print("The value you have entered is incorrect")
         else:
@@ -34,10 +36,12 @@ while end != True: #Plays the game until the game is ended
         selectedCoord = selectedCoord.capitalize()
         if len(selectedCoord)!=2 :
             print("\033[H\033[J") #Clears the board
+            board.fetch()
             board.draw() #Updates the current board display
             print("The value you have entered is incorrect")
         elif selectedCoord[0].isalpha()==False or selectedCoord[1].isdigit()==False :
             print("\033[H\033[J") #Clears the board
+            board.fetch()
             board.draw() #Updates the current board display
             print("The value you have entered is incorrect")
         else:

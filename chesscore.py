@@ -36,8 +36,15 @@ class Board(object) :
         for piece in self.coordinates :
             self.currentBoard[piece[1][0]][piece[1][1]] = piece[0].dispayCharacter
 
+
+
 class Piece(object) :
-    a=1
+    def movePiece(self,actualCoordX,actualCoordY,destinationCoordX,destinationCoordY):
+        for piece in board.coordinates:
+            if piece[1][0]==actualCoordX and piece[1][1]==actualCoordY:
+                piece[1][0] = destinationCoordX
+                piece[1][1] = destinationCoordY
+
 
 
 
