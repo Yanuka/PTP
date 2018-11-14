@@ -8,7 +8,7 @@ print("\033[H\033[J") #Clears the board
 
 end = False
 while end != True: #Plays the game until the game is ended
-
+    board.fetch()
     board.draw() #Updates the current board display
     print()
 
@@ -58,4 +58,7 @@ while end != True: #Plays the game until the game is ended
     selectedCoordY = ord(selectedCoord[0]) - 65
     selectedCoordX = int(selectedCoord[1]) - 1
 
+    for piece in board.coordinates:
+        if piece[1][0]==selectedPieceX and piece[1][1]==selectedPieceY:
+            piece[0].movePiece(selectedPieceX,selectedPieceY,selectedCoordX,selectedCoordY,board)
     print("\033[H\033[J") #Clears the board

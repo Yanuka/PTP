@@ -1,8 +1,10 @@
 class Board(object) :
     coordinates = []
     currentPlayerIsOne = True
+    def __init__(self):
+        self.clear()
 
-    def __init__(self): #Creates the board
+    def clear(self): #Creates the board
         self.currentBoard = []
         for i in range(0,8):
             self.currentBoard += [[]]
@@ -33,14 +35,15 @@ class Board(object) :
 
 
     def fetch(self):
+        self.clear()
         for piece in self.coordinates :
             self.currentBoard[piece[1][0]][piece[1][1]] = piece[0].dispayCharacter
 
 
 
 class Piece(object) :
-    def movePiece(self,actualCoordX,actualCoordY,destinationCoordX,destinationCoordY):
-        for piece in board.coordinates:
+    def movePiece(self,actualCoordX,actualCoordY,destinationCoordX,destinationCoordY,boardName):
+        for piece in boardName.coordinates:
             if piece[1][0]==actualCoordX and piece[1][1]==actualCoordY:
                 piece[1][0] = destinationCoordX
                 piece[1][1] = destinationCoordY
