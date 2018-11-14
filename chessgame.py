@@ -1,9 +1,9 @@
 from chessinit import * #Imports the core program
 
-print("Hello and welcome to chess !\n")
-print("Our chess game is inspired by the og chess game.\n")
-print("Game designed by Lucas, Maxime, Joseph, Alexandre & Morgan\n")
-input("Press enter to start the game...")
+print("\nHello and welcome to chess !\n\n")
+print("Our chess game is inspired by the original chess game.\n\n")
+print("Game designed by Lucas, Maxime, Joseph, Alexandre & Morgan\n\n")
+input('Press ' + '\33[93m' + 'enter ' + '\x1b[0m' + 'to start the game...')
 print("\033[H\033[J") #Clears the board
 
 end = False
@@ -17,8 +17,8 @@ while end != True: #Plays the game until the game is ended
 
     while correctInputPiece==False :
         selectedPiece = input("Select the square of the piece you want to move : ") #Gets the initial square
+        selectedPiece = selectedPiece.capitalize()
         if len(selectedPiece)!=2 :
-            selectedPiece.upper()
             print("\033[H\033[J") #Clears the board
             board.draw() #Updates the current board display
             print("The value you have entered is incorrect")
@@ -29,11 +29,10 @@ while end != True: #Plays the game until the game is ended
         else:
             correctInputPiece=True
 
-
     while correctInputCoord==False :
         selectedCoord = input("Select the square of where you want to move it to : ") #Gets the destination square
+        selectedCoord = selectedCoord.capitalize()
         if len(selectedCoord)!=2 :
-            selectedCoord.upper()
             print("\033[H\033[J") #Clears the board
             board.draw() #Updates the current board display
             print("The value you have entered is incorrect")
