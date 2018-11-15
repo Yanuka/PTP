@@ -72,21 +72,21 @@ class Pawn(Piece) :
             self.displayCharacter = '\33[94m' + 'P' + '\x1b[0m'
 
     def moveList(self, actualCoordX, actualCoordY, boardName):
-        RAS = True
+        noPieceDetected = True
         self.availableMoves = []
 
         if self.color == "White":
             for piece in boardName.coordinates:
                 if piece[1][0] == actualCoordX + 1 and piece[1][1] == actualCoordY:
-                    RAS = False
+                    noPieceDetected = False
 
-            if RAS == True:
+            if noPieceDetected == True:
                 self.availableMoves += [[actualCoordX + 1, actualCoordY]]
                 for piece in boardName.coordinates:
                     if piece[1][0] == actualCoordX + 2 and piece[1][1] == actualCoordY:
-                        RAS = False
+                        noPieceDetected = False
 
-                if RAS == True and self.hasMoved == False:
+                if noPieceDetected == True and self.hasMoved == False:
                     self.availableMoves += [[actualCoordX + 2, actualCoordY]]
 
             for piece in boardName.coordinates:
@@ -98,15 +98,15 @@ class Pawn(Piece) :
         elif self.color == "Black":
             for piece in boardName.coordinates:
                 if piece[1][0] == actualCoordX - 1 and piece[1][1] == actualCoordY:
-                    RAS = False
+                    noPieceDetected = False
 
-            if RAS == True:
+            if noPieceDetected == True:
                 self.availableMoves += [[actualCoordX - 1, actualCoordY]]
                 for piece in boardName.coordinates:
                     if piece[1][0] == actualCoordX - 2 and piece[1][1] == actualCoordY:
-                        RAS = False
+                        noPieceDetected = False
 
-                if RAS == True and self.hasMoved == False:
+                if noPieceDetected == True and self.hasMoved == False:
                     self.availableMoves += [[actualCoordX - 2, actualCoordY]]
 
                 for piece in boardName.coordinates:
