@@ -1,6 +1,6 @@
 class Board(object) :
     coordinates = []
-    currentPlayerIsOne = True
+    currentPlayerIsOne = False
     def __init__(self):
         self.clear()
 
@@ -38,6 +38,11 @@ class Board(object) :
         self.clear()
         for piece in self.coordinates :
             self.displayBoard[piece[1][0]][piece[1][1]] = piece[0].displayCharacter
+
+    def update(self):
+        print("\033[H\033[J") #Clears the board
+        self.fetch()
+        self.draw() #Updates the current board display
 
     def getPlayerColor(self, selectedPieceX, selectedPieceY, playerColor):
         for piece in self.coordinates:
