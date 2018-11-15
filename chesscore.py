@@ -4,12 +4,12 @@ class Board(object) :
     def __init__(self):
         self.clear()
 
-    def clear(self): #Creates the board
-        self.currentBoard = []
+    def clear(self): #Creates or resets the board
+        self.displayBoard = []
         for i in range(0,8):
-            self.currentBoard += [[]]
+            self.displayBoard += [[]]
             for j in range(0,8):
-                self.currentBoard[i] += [' ']
+                self.displayBoard[i] += [' ']
 
     def draw(self): #Draws the board
         if self.currentPlayerIsOne == True:
@@ -20,7 +20,7 @@ class Board(object) :
             print()
         print("        A     B     C     D     E     F     G     H")
         coordName = 1
-        for i in self.currentBoard:
+        for i in self.dislpayBoard:
             count=0
             print("     —————————————————————————————————————————————————")
             for j in i:
@@ -34,10 +34,10 @@ class Board(object) :
         print("     —————————————————————————————————————————————————")
 
 
-    def fetch(self):
+    def fetch(self):#Updates the display board relative to the coordinates table
         self.clear()
         for piece in self.coordinates :
-            self.currentBoard[piece[1][0]][piece[1][1]] = piece[0].dispayCharacter
+            self.displayBoard[piece[1][0]][piece[1][1]] = piece[0].displayCharacter
 
 
 
@@ -56,54 +56,54 @@ class Pawn(Piece) :
    def __init__(self,color):
        self.color=color
        if self.color == "White":
-           self.dispayCharacter = '\33[91m' + 'P' + '\x1b[0m'
+           self.displayCharacter = '\33[91m' + 'P' + '\x1b[0m'
        elif self.color == "Black":
-           self.dispayCharacter = '\33[94m' + 'P' + '\x1b[0m'
+           self.displayCharacter = '\33[94m' + 'P' + '\x1b[0m'
 
 
 class King(Piece) :
     def __init__(self,color):
         self.color=color
         if self.color == "White":
-            self.dispayCharacter = '\33[91m' + 'K' + '\x1b[0m'
+            self.displayCharacter = '\33[91m' + 'K' + '\x1b[0m'
         elif self.color == "Black":
-            self.dispayCharacter = '\33[94m' + 'K' + '\x1b[0m'
+            self.displayCharacter = '\33[94m' + 'K' + '\x1b[0m'
 
 
 class Queen(Piece) :
     def __init__(self,color):
         self.color=color
         if self.color == "White":
-            self.dispayCharacter = '\33[91m' + 'Q' + '\x1b[0m'
+            self.displayCharacter = '\33[91m' + 'Q' + '\x1b[0m'
         elif self.color == "Black":
-            self.dispayCharacter = '\33[94m' + 'Q' + '\x1b[0m'
+            self.displayCharacter = '\33[94m' + 'Q' + '\x1b[0m'
 
 
 class Bishop(Piece) :
     def __init__(self,color):
         self.color=color
         if self.color == "White":
-            self.dispayCharacter = '\33[91m' + 'B' + '\x1b[0m'
+            self.displayCharacter = '\33[91m' + 'B' + '\x1b[0m'
         elif self.color == "Black":
-            self.dispayCharacter = '\33[94m' + 'B' + '\x1b[0m'
+            self.displayCharacter = '\33[94m' + 'B' + '\x1b[0m'
 
 
 class Knight(Piece) :
     def __init__(self,color):
         self.color=color
         if self.color == "White":
-            self.dispayCharacter = '\33[91m' + 'N' + '\x1b[0m'
+            self.displayCharacter = '\33[91m' + 'N' + '\x1b[0m'
         elif self.color == "Black":
-            self.dispayCharacter = '\33[94m' + 'N' + '\x1b[0m'
+            self.displayCharacter = '\33[94m' + 'N' + '\x1b[0m'
 
 
 class Rook(Piece) :
     def __init__(self,color):
         self.color=color
         if self.color == "White":
-            self.dispayCharacter = '\33[91m' + 'R' + '\x1b[0m'
+            self.displayCharacter = '\33[91m' + 'R' + '\x1b[0m'
         elif self.color == "Black":
-            self.dispayCharacter = '\33[94m' + 'R' + '\x1b[0m'
+            self.displayCharacter = '\33[94m' + 'R' + '\x1b[0m'
 
 
 class supervisor() :
