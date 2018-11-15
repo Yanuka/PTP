@@ -17,9 +17,18 @@ while end != True: #Plays the game until the game is ended
 
     allowedInputLetter = ["A","B","C","D","E","F","G","H"]
 
+    if board.currentPlayerIsOne == False :
+        board.currentPlayerIsOne = True
+        playerColor = "White"
+    else:
+        board.currentPlayerIsOne = False
+        playerColor = "Black"
+
     while correctInputPiece==False :
         selectedPiece = input("Select the square of the piece you want to move : ") #Gets the initial square
         selectedPiece = selectedPiece.capitalize()
+        selectedPieceY = ord(selectedPiece[0]) - 65 #Converts the input into coordinates
+        selectedPieceX = int(selectedPiece[1]) - 1
         if len(selectedPiece)!=2 :
             print("\033[H\033[J") #Clears the board
             board.fetch()
@@ -30,12 +39,19 @@ while end != True: #Plays the game until the game is ended
             board.fetch()
             board.draw() #Updates the current board display
             print("The value you have entered is incorrect")
+        elif board.getPlayerColor(selectedPieceX, selectedPieceY, playerColor) == True:
+            print("\033[H\033[J") #Clears the board
+            board.fetch()
+            board.draw() #Updates the current board display
+            print("please select a piece of your color!")
         else:
             correctInputPiece=True
 
     while correctInputCoord==False :
         selectedCoord = input("Select the square of where you want to move it to : ") #Gets the destination square
         selectedCoord = selectedCoord.capitalize()
+        selectedCoordY = ord(selectedCoord[0]) - 65
+        selectedCoordX = int(selectedCoord[1]) - 1
         if len(selectedCoord)!=2 :
             print("\033[H\033[J") #Clears the board
             board.fetch()
@@ -48,17 +64,6 @@ while end != True: #Plays the game until the game is ended
             print("The value you have entered is incorrect")
         else:
             correctInputCoord=True
-
-
-    if board.currentPlayerIsOne == False :
-        board.currentPlayerIsOne = True
-    else:
-        board.currentPlayerIsOne = False
-
-    selectedPieceY = ord(selectedPiece[0]) - 65 #Converts the input into coordinates
-    selectedPieceX = int(selectedPiece[1]) - 1
-    selectedCoordY = ord(selectedCoord[0]) - 65
-    selectedCoordX = int(selectedCoord[1]) - 1
 
     for piece in board.coordinates:
         if piece[1][0]==selectedPieceX and piece[1][1]==selectedPieceY:

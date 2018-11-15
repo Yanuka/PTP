@@ -20,7 +20,7 @@ class Board(object) :
             print()
         print("        A     B     C     D     E     F     G     H")
         coordName = 1
-        for i in self.dislpayBoard:
+        for i in self.displayBoard:
             count=0
             print("     —————————————————————————————————————————————————")
             for j in i:
@@ -38,6 +38,11 @@ class Board(object) :
         self.clear()
         for piece in self.coordinates :
             self.displayBoard[piece[1][0]][piece[1][1]] = piece[0].displayCharacter
+
+    def getPlayerColor(self, selectedPieceX, selectedPieceY, playerColor):
+        for piece in self.coordinates:
+            if piece[1][0]==selectedPieceX and piece[1][1]==selectedPieceY and piece[0].color == playerColor:
+                return True
 
 
 
