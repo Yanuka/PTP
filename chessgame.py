@@ -12,8 +12,10 @@ while end != True: #Plays the game until the game is ended
     board.draw() #Updates the current board display
     print()
 
-    correctInputPiece=False
-    correctInputCoord=False
+    correctInputPiece = False
+    correctInputCoord = False
+
+    allowedInputLetter = ["A","B","C","D","E","F","G","H"]
 
     while correctInputPiece==False :
         selectedPiece = input("Select the square of the piece you want to move : ") #Gets the initial square
@@ -22,8 +24,8 @@ while end != True: #Plays the game until the game is ended
             print("\033[H\033[J") #Clears the board
             board.fetch()
             board.draw() #Updates the current board display
-            print("The value you have entered is incorrect")
-        elif selectedPiece[0].isalpha()==False or selectedPiece[1].isdigit()==False :
+            print("Please enter the coordinates like this : \'E4\'")
+        elif selectedPiece[0].isalpha()==False or selectedPiece[0] not in allowedInputLetter or selectedPiece[1].isdigit()==False or int(selectedPiece[1])<1 or int(selectedPiece[1])>8 :
             print("\033[H\033[J") #Clears the board
             board.fetch()
             board.draw() #Updates the current board display
@@ -38,8 +40,8 @@ while end != True: #Plays the game until the game is ended
             print("\033[H\033[J") #Clears the board
             board.fetch()
             board.draw() #Updates the current board display
-            print("The value you have entered is incorrect")
-        elif selectedCoord[0].isalpha()==False or selectedCoord[1].isdigit()==False :
+            print("Please enter the coordinates like this : \'E5\'")
+        elif selectedCoord[0].isalpha()==False or selectedCoord[0] not in allowedInputLetter or selectedCoord[1].isdigit()==False or int(selectedCoord[1])<1 or int(selectedCoord[1])>8 :
             print("\033[H\033[J") #Clears the board
             board.fetch()
             board.draw() #Updates the current board display
@@ -48,7 +50,7 @@ while end != True: #Plays the game until the game is ended
             correctInputCoord=True
 
 
-    if board.currentPlayerIsOne == False:
+    if board.currentPlayerIsOne == False :
         board.currentPlayerIsOne = True
     else:
         board.currentPlayerIsOne = False
