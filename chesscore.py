@@ -63,8 +63,8 @@ class Piece(object) :
 
 
 class Pawn(Piece) :
-    self.hasMoved = False
     def __init__(self, color):
+        self.hasMoved = False
         self.color = color
         if self.color == "White":
             self.displayCharacter = '\33[91m' + 'P' + '\x1b[0m'
