@@ -1,5 +1,6 @@
 from chesscore import * #Imports the core program
 
+supervisor = supervisor()
 board = Board()
 whitePawn1 = Pawn("White")
 whitePawn2 = Pawn("White")

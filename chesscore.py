@@ -40,7 +40,7 @@ class Board(object) :
             self.displayBoard[piece[1][0]][piece[1][1]] = piece[0].displayCharacter
 
     def update(self):
-        print("\033[H\033[J") #Clears the board
+        #print("\033[H\033[J") #Clears the board
         self.fetch()
         self.draw() #Updates the current board display
 
@@ -56,8 +56,11 @@ class Piece(object) :
                 piece[1][0] = destinationCoordX
                 piece[1][1] = destinationCoordY
 
+
 class Pawn(Piece) :
     def __init__(self, color):
+        self.capturePossible = []
+        self.availableMoves = []
         self.hasMoved = False
         self.color = color
         if self.color == "White":
@@ -68,6 +71,7 @@ class Pawn(Piece) :
     def moveList(self, actualCoordX, actualCoordY, boardName):
         noPieceDetected = True
         self.availableMoves = []
+        self.capturePossible = []
 
         if self.color == "White":
             for piece in boardName.coordinates:
@@ -86,8 +90,10 @@ class Pawn(Piece) :
             for piece in boardName.coordinates:
                 if piece[1][0] == actualCoordX + 1 and piece[1][1] == actualCoordY + 1:
                     self.availableMoves += [[actualCoordX + 1, actualCoordY + 1]]
+                    self.capturePossible += [[actualCoordX + 1, actualCoordY + 1]]
                 elif piece[1][0] == actualCoordX + 1 and piece[1][1] == actualCoordY - 1:
                     self.availableMoves += [[actualCoordX + 1, actualCoordY - 1]]
+                    self.capturePossible += [[actualCoordX + 1, actualCoordY - 1]]
 
         elif self.color == "Black":
             for piece in boardName.coordinates:
@@ -106,8 +112,10 @@ class Pawn(Piece) :
                 for piece in boardName.coordinates:
                     if piece[1][0] == actualCoordX - 1 and piece[1][1] == actualCoordY + 1:
                         self.availableMoves += [[actualCoordX - 1, actualCoordY + 1]]
+                        self.capturePossible += [[actualCoordX - 1, actualCoordY + 1]]
                     elif piece[1][0] == actualCoordX - 1 and piece[1][1] == actualCoordY - 1:
                         self.availableMoves += [[actualCoordX - 1, actualCoordY - 1]]
+                        self.capturePossible += [[actualCoordX - 1, actualCoordY - 1]]
 
         self.hasMoved = True
         return self.availableMoves
@@ -158,4 +166,13 @@ class Rook(Piece) :
 
 
 class supervisor() :
-    pass
+
+    def capturePiece(self, destinationCoordX, destinationCoordY, boardName):
+        print('4')
+        print(boardName.coordinates)
+        for piece in boardName.coordinates : #Moves the selected piece
+            if piece[1][0]==destinationCoordX and piece[1][1]==destinationCoordY:
+                print('5')
+                boardName.coordinates.remove(piece)
+                print(boardName.coordinates)
+                boardName.fetch()

@@ -55,12 +55,30 @@ while end != True: #Plays the game until the game is ended
         else:
             correctInputCoord=True #Tells the program that the input was correctly executed
 
-        selectedPieceY = ord(selectedPiece[0]) - 65 #Converts the selected piece into Y coordinates
-        selectedPieceX = int(selectedPiece[1]) - 1 #Converts the selected piece into X coordinates
-        selectedCoordY = ord(selectedCoord[0]) - 65 #Converts the selected coordinates into Y coordinates
-        selectedCoordX = int(selectedCoord[1]) - 1 #Converts the selected coordinates into X coordinates
+    selectedPieceY = ord(selectedPiece[0]) - 65 #Converts the selected piece into Y coordinates
+    selectedPieceX = int(selectedPiece[1]) - 1 #Converts the selected piece into X coordinates
+    selectedCoordY = ord(selectedCoord[0]) - 65 #Converts the selected coordinates into Y coordinates
+    selectedCoordX = int(selectedCoord[1]) - 1 #Converts the selected coordinates into X coordinates
 
+    pieceCaptured = False
     for piece in board.coordinates : #Moves the selected piece
+        if pieceCaptured == True :
+            break
+        elif piece[1][0]==selectedPieceX and piece[1][1]==selectedPieceY:
+            print('1')
+            piece[0].moveList(selectedPieceX, selectedPieceY, board)
+            for pieceToCapture in piece[0].capturePossible:
+                print('2')
+                if  pieceToCapture[0] == selectedCoordX and  pieceToCapture[1] == selectedCoordY:
+                    print('3')
+                    supervisor.capturePiece(selectedCoordX,selectedCoordY,board)
+                    pieceCaptured = True
+                    break
+
+    for piece in board.coordinates :
         if piece[1][0]==selectedPieceX and piece[1][1]==selectedPieceY:
             piece[0].movePiece(selectedPieceX,selectedPieceY,selectedCoordX,selectedCoordY,board)
-    print("\033[H\033[J") #Clears the board
+
+
+
+    #print("\033[H\033[J") #Clears the board
