@@ -1,13 +1,15 @@
 class Board(object) :
     coordinates = []
-    currentPlayerIsOne = True
+    currentPlayerIsOne = False
+    def __init__(self):
+        self.clear()
 
-    def __init__(self): #Creates the board
-        self.currentBoard = []
+    def clear(self): #Creates or resets the board
+        self.displayBoard = []
         for i in range(0,8):
-            self.currentBoard += [[]]
+            self.displayBoard += [[]]
             for j in range(0,8):
-                self.currentBoard[i] += [' ']
+                self.displayBoard[i] += [' ']
 
     def draw(self): #Draws the board
         if self.currentPlayerIsOne == True:
@@ -18,7 +20,7 @@ class Board(object) :
             print()
         print("        A     B     C     D     E     F     G     H")
         coordName = 1
-        for i in self.currentBoard:
+        for i in self.displayBoard:
             count=0
             print("     —————————————————————————————————————————————————")
             for j in i:
@@ -32,69 +34,151 @@ class Board(object) :
         print("     —————————————————————————————————————————————————")
 
 
-    def fetch(self):
+    def fetch(self):#Updates the display board relative to the coordinates table
+        self.clear()
         for piece in self.coordinates :
-            self.currentBoard[piece[1][0]][piece[1][1]] = piece[0].dispayCharacter
+            self.displayBoard[piece[1][0]][piece[1][1]] = piece[0].displayCharacter
+
+    def update(self):
+        print("\033[H\033[J") #Clears the board
+        self.fetch()
+        self.draw() #Updates the current board display
+
+    def getPlayerColor(self, selectedPieceX, selectedPieceY, playerColor):
+        for piece in self.coordinates:
+            if piece[1][0]==selectedPieceX and piece[1][1]==selectedPieceY and piece[0].color == playerColor:
+                return True
+
+    def isSquareEmpty(self, selectedPieceX, selectedPieceY):
+        isSquareOccupied = False
+        for piece in self.coordinates:
+            if piece[1][0] == selectedPieceX and piece[1][1] == selectedPieceY:
+                isSquareOccupied = True
+        if isSquareOccupied == True:
+            return False
+        else :
+            return True
 
 class Piece(object) :
-    a=1
-
-
+    def movePiece(self,actualCoordX,actualCoordY,destinationCoordX,destinationCoordY,boardName):
+        for piece in boardName.coordinates:
+            if piece[1][0]==actualCoordX and piece[1][1]==actualCoordY:
+                piece[1][0] = destinationCoordX
+                piece[1][1] = destinationCoordY
 
 
 class Pawn(Piece) :
-   def __init__(self,color):
-       self.color=color
-       if self.color == "White":
-           self.dispayCharacter = '\33[91m' + 'P' + '\x1b[0m'
-       elif self.color == "Black":
-           self.dispayCharacter = '\33[94m' + 'P' + '\x1b[0m'
+    def __init__(self, color):
+        self.capturePossible = []
+        self.availableMoves = []
+        self.hasMoved = False
+        self.color = color
+        if self.color == "White":
+            self.displayCharacter = '\33[91m' + 'P' + '\x1b[0m'
+        elif self.color == "Black":
+            self.displayCharacter = '\33[94m' + 'P' + '\x1b[0m'
 
+    def moveList(self, actualCoordX, actualCoordY, boardName):
+        noPieceDetected = True
+        self.availableMoves = []
+        self.capturePossible = []
+
+        if self.color == "White":
+            for piece in boardName.coordinates:
+                if piece[1][0] == actualCoordX + 1 and piece[1][1] == actualCoordY:
+                    noPieceDetected = False
+
+            if noPieceDetected == True:
+                self.availableMoves += [[actualCoordX + 1, actualCoordY]]
+                for piece in boardName.coordinates:
+                    if piece[1][0] == actualCoordX + 2 and piece[1][1] == actualCoordY:
+                        noPieceDetected = False
+
+                if noPieceDetected == True and self.hasMoved == False:
+                    self.availableMoves += [[actualCoordX + 2, actualCoordY]]
+
+            for piece in boardName.coordinates:
+                if piece[1][0] == actualCoordX + 1 and piece[1][1] == actualCoordY + 1:
+                    self.availableMoves += [[actualCoordX + 1, actualCoordY + 1]]
+                    self.capturePossible += [[actualCoordX + 1, actualCoordY + 1]]
+                elif piece[1][0] == actualCoordX + 1 and piece[1][1] == actualCoordY - 1:
+                    self.availableMoves += [[actualCoordX + 1, actualCoordY - 1]]
+                    self.capturePossible += [[actualCoordX + 1, actualCoordY - 1]]
+
+        elif self.color == "Black":
+            for piece in boardName.coordinates:
+                if piece[1][0] == actualCoordX - 1 and piece[1][1] == actualCoordY:
+                    noPieceDetected = False
+
+            if noPieceDetected == True:
+                self.availableMoves += [[actualCoordX - 1, actualCoordY]]
+                for piece in boardName.coordinates:
+                    if piece[1][0] == actualCoordX - 2 and piece[1][1] == actualCoordY:
+                        noPieceDetected = False
+
+                if noPieceDetected == True and self.hasMoved == False:
+                    self.availableMoves += [[actualCoordX - 2, actualCoordY]]
+
+                for piece in boardName.coordinates:
+                    if piece[1][0] == actualCoordX - 1 and piece[1][1] == actualCoordY + 1:
+                        self.availableMoves += [[actualCoordX - 1, actualCoordY + 1]]
+                        self.capturePossible += [[actualCoordX - 1, actualCoordY + 1]]
+                    elif piece[1][0] == actualCoordX - 1 and piece[1][1] == actualCoordY - 1:
+                        self.availableMoves += [[actualCoordX - 1, actualCoordY - 1]]
+                        self.capturePossible += [[actualCoordX - 1, actualCoordY - 1]]
+
+        self.hasMoved = True
+        return self.availableMoves
 
 class King(Piece) :
     def __init__(self,color):
         self.color=color
         if self.color == "White":
-            self.dispayCharacter = '\33[91m' + 'K' + '\x1b[0m'
+            self.displayCharacter = '\33[91m' + 'K' + '\x1b[0m'
         elif self.color == "Black":
-            self.dispayCharacter = '\33[94m' + 'K' + '\x1b[0m'
+            self.displayCharacter = '\33[94m' + 'K' + '\x1b[0m'
 
 
 class Queen(Piece) :
     def __init__(self,color):
         self.color=color
         if self.color == "White":
-            self.dispayCharacter = '\33[91m' + 'Q' + '\x1b[0m'
+            self.displayCharacter = '\33[91m' + 'Q' + '\x1b[0m'
         elif self.color == "Black":
-            self.dispayCharacter = '\33[94m' + 'Q' + '\x1b[0m'
+            self.displayCharacter = '\33[94m' + 'Q' + '\x1b[0m'
 
 
 class Bishop(Piece) :
     def __init__(self,color):
         self.color=color
         if self.color == "White":
-            self.dispayCharacter = '\33[91m' + 'B' + '\x1b[0m'
+            self.displayCharacter = '\33[91m' + 'B' + '\x1b[0m'
         elif self.color == "Black":
-            self.dispayCharacter = '\33[94m' + 'B' + '\x1b[0m'
+            self.displayCharacter = '\33[94m' + 'B' + '\x1b[0m'
 
 
 class Knight(Piece) :
     def __init__(self,color):
         self.color=color
         if self.color == "White":
-            self.dispayCharacter = '\33[91m' + 'N' + '\x1b[0m'
+            self.displayCharacter = '\33[91m' + 'N' + '\x1b[0m'
         elif self.color == "Black":
-            self.dispayCharacter = '\33[94m' + 'N' + '\x1b[0m'
+            self.displayCharacter = '\33[94m' + 'N' + '\x1b[0m'
 
 
 class Rook(Piece) :
     def __init__(self,color):
         self.color=color
         if self.color == "White":
-            self.dispayCharacter = '\33[91m' + 'R' + '\x1b[0m'
+            self.displayCharacter = '\33[91m' + 'R' + '\x1b[0m'
         elif self.color == "Black":
-            self.dispayCharacter = '\33[94m' + 'R' + '\x1b[0m'
+            self.displayCharacter = '\33[94m' + 'R' + '\x1b[0m'
 
 
 class supervisor() :
-    pass
+
+    def capturePiece(self, destinationCoordX, destinationCoordY, boardName):
+        for piece in boardName.coordinates : #Moves the selected piece
+            if piece[1][0]==destinationCoordX and piece[1][1]==destinationCoordY:
+                boardName.coordinates.remove(piece)
+                boardName.fetch()
