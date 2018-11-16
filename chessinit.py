@@ -1,4 +1,4 @@
-from chesscore import *
+from chesscore import * #Imports the core program
 
 board = Board()
 whitePawn1 = Pawn("White")
