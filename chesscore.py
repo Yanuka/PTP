@@ -49,6 +49,16 @@ class Board(object) :
             if piece[1][0]==selectedPieceX and piece[1][1]==selectedPieceY and piece[0].color == playerColor:
                 return True
 
+    def isSquareEmpty(self, selectedPieceX, selectedPieceY):
+        isSquareOccupied = False
+        for piece in self.coordinates:
+            if piece[1][0] == selectedPieceX and piece[1][1] == selectedPieceY:
+                isSquareOccupied = True
+        if isSquareOccupied == True:
+            return False
+        else :
+            return True
+
 class Piece(object) :
     def movePiece(self,actualCoordX,actualCoordY,destinationCoordX,destinationCoordY,boardName):
         for piece in boardName.coordinates:

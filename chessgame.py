@@ -34,6 +34,9 @@ while end != True: #Plays the game until the game is ended
         elif selectedPiece[0].isalpha()==False or selectedPiece[0] not in allowedInputLetter or selectedPiece[1].isdigit()==False or int(selectedPiece[1])<1 or int(selectedPiece[1])>8 : #Cheks if the entered input is correctly syntaxed
             board.update() #Updates the board
             print("The value you have entered is incorrect")
+        elif board.isSquareEmpty((int(selectedPiece[1]) - 1), (ord(selectedPiece[0]) - 65)) == True:
+            board.update()
+            print("Please select an existing piece!")
         elif board.getPlayerColor((int(selectedPiece[1]) - 1), (ord(selectedPiece[0]) - 65), playerColor) == True: #Checks if the piece selected is the right color
             board.update() #Updates the board
             print("Please select a piece of your color!")
