@@ -65,12 +65,9 @@ while end != True: #Plays the game until the game is ended
         if pieceCaptured == True :
             break
         elif piece[1][0]==selectedPieceX and piece[1][1]==selectedPieceY:
-            print('1')
             piece[0].moveList(selectedPieceX, selectedPieceY, board)
             for pieceToCapture in piece[0].capturePossible:
-                print('2')
                 if  pieceToCapture[0] == selectedCoordX and  pieceToCapture[1] == selectedCoordY:
-                    print('3')
                     supervisor.capturePiece(selectedCoordX,selectedCoordY,board)
                     pieceCaptured = True
                     break

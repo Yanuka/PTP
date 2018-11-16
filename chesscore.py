@@ -168,11 +168,7 @@ class Rook(Piece) :
 class supervisor() :
 
     def capturePiece(self, destinationCoordX, destinationCoordY, boardName):
-        print('4')
-        print(boardName.coordinates)
         for piece in boardName.coordinates : #Moves the selected piece
             if piece[1][0]==destinationCoordX and piece[1][1]==destinationCoordY:
-                print('5')
                 boardName.coordinates.remove(piece)
-                print(boardName.coordinates)
                 boardName.fetch()
