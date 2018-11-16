@@ -78,4 +78,4 @@ while end != True: #Plays the game until the game is ended
 
 
 
-    #print("\033[H\033[J") #Clears the board
+    print("\033[H\033[J") #Clears the board

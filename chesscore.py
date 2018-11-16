@@ -40,7 +40,7 @@ class Board(object) :
             self.displayBoard[piece[1][0]][piece[1][1]] = piece[0].displayCharacter
 
     def update(self):
-        #print("\033[H\033[J") #Clears the board
+        print("\033[H\033[J") #Clears the board
         self.fetch()
         self.draw() #Updates the current board display
 
