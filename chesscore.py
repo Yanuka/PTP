@@ -127,6 +127,7 @@ class Pawn(Piece) :
                         self.availableMoves += [[actualCoordX - 1, actualCoordY - 1]]
                         self.capturePossible += [[actualCoordX - 1, actualCoordY - 1]]
 
+        #MANQUE LA TRANSFO EN BOUT DE LIGNE
         self.hasMoved = True
         return self.availableMoves
 
@@ -137,6 +138,62 @@ class King(Piece) :
             self.displayCharacter = '\33[91m' + 'K' + '\x1b[0m'
         elif self.color == "Black":
             self.displayCharacter = '\33[94m' + 'K' + '\x1b[0m'
+        self.capturePossible = []
+
+    def moveList(self, actualCoordX, actualCoordY, boardName):
+        self.availableMoves = [[actualCoordX + 1, actualCoordY], [actualCoordX + 1, actualCoordY + 1],[actualCoordX + 1, actualCoordY - 1], [actualCoordX - 1, actualCoordY],[actualCoordX - 1, actualCoordY + 1], [actualCoordX - 1, actualCoordY - 1],[actualCoordX, actualCoordY + 1], [actualCoordX, actualCoordY - 1]]
+
+        for piece in boardName.coordinates:
+            if piece[1][0] == actualCoordX + 1 and piece[1][1] == actualCoordY:
+                if piece[0].color == self.color:
+                    self.availableMoves.remove([actualCoordX + 1, actualCoordY])
+                elif piece[0].color != self.color:
+                    self.capturePossible += [[actualCoordX + 1, actualCoordY]]
+
+            elif piece[1][0] == actualCoordX + 1 and piece[1][1] == actualCoordY + 1:
+                if piece[0].color == self.color:
+                    self.availableMoves.remove([actualCoordX + 1, actualCoordY + 1])
+                elif piece[0].color != self.color:
+                    self.capturePossible += [[actualCoordX + 1, actualCoordY + 1]]
+
+            elif piece[1][0] == actualCoordX + 1 and piece[1][1] == actualCoordY - 1:
+                if piece[0].color == self.color:
+                    self.availableMoves.remove([actualCoordX + 1, actualCoordY - 1])
+                elif piece[0].color != self.color:
+                    self.capturePossible += [[actualCoordX + 1, actualCoordY - 1]]
+
+            elif piece[1][0] == actualCoordX - 1 and piece[1][1] == actualCoordY:
+                if piece[0].color == self.color:
+                    self.availableMoves.remove([actualCoordX + 1, actualCoordY])
+                elif piece[0].color != self.color:
+                    self.capturePossible += [[actualCoordX + 1, actualCoordY]]
+
+            elif piece[1][0] == actualCoordX - 1 and piece[1][1] == actualCoordY + 1:
+                if piece[0].color == self.color:
+                    self.availableMoves.remove([actualCoordX - 1, actualCoordY + 1])
+                elif piece[0].color != self.color:
+                    self.capturePossible += [[actualCoordX - 1, actualCoordY + 1]]
+
+            elif piece[1][0] == actualCoordX - 1 and piece[1][1] == actualCoordY - 1:
+                if piece[0].color == self.color:
+                    self.availableMoves.remove([actualCoordX - 1, actualCoordY - 1])
+                elif piece[0].color != self.color:
+                    self.capturePossible += [[actualCoordX - 1, actualCoordY - 1]]
+
+            elif piece[1][0] == actualCoordX and piece[1][1] == actualCoordY + 1:
+                if piece[0].color == self.color:
+                    self.availableMoves.remove([actualCoordX, actualCoordY + 1])
+                elif piece[0].color != self.color:
+                    self.capturePossible += [[actualCoordX, actualCoordY + 1]]
+
+            elif piece[1][0] == actualCoordX and piece[1][1] == actualCoordY - 1:
+                if piece[0].color == self.color:
+                    self.availableMoves.remove([actualCoordX, actualCoordY - 1])
+                elif piece[0].color != self.color:
+                    self.capturePossible += [[actualCoordX, actualCoordY - 1]]
+
+        #MANQUE LE ROCK
+        return self.availableMoves
 
 
 class Queen(Piece) :
