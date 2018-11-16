@@ -96,6 +96,7 @@ class Pawn(Piece) :
 
                 if noPieceDetected == True and self.hasMoved == False:
                     self.availableMoves += [[actualCoordX + 2, actualCoordY]]
+                    self.hasMoved = True
 
             for piece in boardName.coordinates:
                 if piece[1][0] == actualCoordX + 1 and piece[1][1] == actualCoordY + 1:

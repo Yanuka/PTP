@@ -6,8 +6,8 @@ print("Game designed by Lucas, Maxime, Joseph, Alexandre & Morgan\n\n")
 input('Press ' + '\33[93m' + 'enter ' + '\x1b[0m' + 'to start the game...')
 print("\033[H\033[J") #Clears the board
 
-end = False
-while end != True: #Plays the game until the game is ended
+gameEnded = False
+while gameEnded != True: #Plays the game until the game is ended
     if board.currentPlayerIsOne == False : #Turn of player Black
         board.currentPlayerIsOne = True
         playerColor = "Black"
@@ -56,7 +56,15 @@ while end != True: #Plays the game until the game is ended
             board.update() #Updates the board
             print("The value you have entered is incorrect")
         else:
-            correctInputCoord=True #Tells the program that the input was correctly executed
+            for piece in board.coordinates :
+                if piece[1][0]== int(selectedPiece[1]) - 1 and piece[1][1]==ord(selectedPiece[0]) - 65:
+                    if [int(selectedCoord[1]) - 1, ord(selectedCoord[0]) - 65] not in piece[0].moveList(int(selectedPiece[1]) - 1, ord(selectedPiece[0]) - 65, board):
+                        print(piece[0].availableMoves)
+                        board.update()
+                        print("This move is not authorized", end='')
+                    else:
+                        piece[0].hasMoved = True
+                        correctInputCoord=True #Tells the program that the input was correctly executed
 
     selectedPieceY = ord(selectedPiece[0]) - 65 #Converts the selected piece into Y coordinates
     selectedPieceX = int(selectedPiece[1]) - 1 #Converts the selected piece into X coordinates
