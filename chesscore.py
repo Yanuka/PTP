@@ -49,18 +49,12 @@ class Board(object) :
             if piece[1][0]==selectedPieceX and piece[1][1]==selectedPieceY and piece[0].color == playerColor:
                 return True
 
-
-
 class Piece(object) :
     def movePiece(self,actualCoordX,actualCoordY,destinationCoordX,destinationCoordY,boardName):
         for piece in boardName.coordinates:
             if piece[1][0]==actualCoordX and piece[1][1]==actualCoordY:
                 piece[1][0] = destinationCoordX
                 piece[1][1] = destinationCoordY
-
-
-
-
 
 class Pawn(Piece) :
     def __init__(self, color):
@@ -117,7 +111,6 @@ class Pawn(Piece) :
 
         self.hasMoved = True
         return self.availableMoves
-
 
 class King(Piece) :
     def __init__(self,color):
