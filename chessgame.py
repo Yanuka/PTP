@@ -40,6 +40,9 @@ while gameEnded != True: #Plays the game until the game is ended
         elif board.getPlayerColor((int(selectedPiece[1]) - 1), (ord(selectedPiece[0]) - 65), playerColor) == True: #Checks if the piece selected is the right color
             board.update() #Updates the board
             print("Please select a piece of your color!")
+        elif board.isMoveListEmpty((int(selectedPiece[1]) - 1), (ord(selectedPiece[0]) - 65), board) == True:
+            board.update() #Updates the board
+            print("Please select a piece you can move!")
         else:
             correctInputPiece=True #Tells the program that the input was correctly executed
 
