@@ -30,19 +30,19 @@ while gameEnded != True: #Plays the game until the game is ended
 
         if len(selectedPiece)!=2 : #Checks if the the length is correct
             board.update() #Updates the board
-            print("Please enter the coordinates like this : \'E4\'")
+            print('\33[93m' + '|!| ' + '\x1b[0m' + 'Please enter the coordinates like this : \'E4\'')
         elif selectedPiece[0].isalpha()==False or selectedPiece[0] not in allowedInputLetter or selectedPiece[1].isdigit()==False or int(selectedPiece[1])<1 or int(selectedPiece[1])>8 : #Cheks if the entered input is correctly syntaxed
             board.update() #Updates the board
-            print("The value you have entered is incorrect")
+            print('\33[93m' + '|!| ' + '\x1b[0m' + 'The value you have entered is incorrect')
         elif board.isSquareEmpty((int(selectedPiece[1]) - 1), (ord(selectedPiece[0]) - 65)) == True:
             board.update()
-            print("Please select an existing piece!")
+            print('\33[93m' + '|!| ' + '\x1b[0m' + 'Please select an existing piece')
         elif board.getPlayerColor((int(selectedPiece[1]) - 1), (ord(selectedPiece[0]) - 65), playerColor) == True: #Checks if the piece selected is the right color
             board.update() #Updates the board
-            print("Please select a piece of your color!")
+            print('\33[93m' + '|!| ' + '\x1b[0m' + 'Please select a piece of your color')
         elif board.isMoveListEmpty((int(selectedPiece[1]) - 1), (ord(selectedPiece[0]) - 65), board) == True:
             board.update() #Updates the board
-            print("Please select a piece you can move!")
+            print('\33[93m' + '|!| ' + '\x1b[0m' + 'Please select a piece you can move')
         else:
             correctInputPiece=True #Tells the program that the input was correctly executed
 
@@ -54,17 +54,17 @@ while gameEnded != True: #Plays the game until the game is ended
 
         if len(selectedCoord)!=2 : #Checks if the the length is correct
             board.update() #Updates the board
-            print("Please enter the coordinates like this : \'E5\'")
+            print('\33[93m' + '|!| ' + '\x1b[0m' + 'Please enter the coordinates like this : \'E5\'')
         elif selectedCoord[0].isalpha()==False or selectedCoord[0] not in allowedInputLetter or selectedCoord[1].isdigit()==False or int(selectedCoord[1])<1 or int(selectedCoord[1])>8 : #Cheks if the entered input is correctly syntaxed
             board.update() #Updates the board
-            print("The value you have entered is incorrect")
+            print('\33[93m' + '|!| ' + '\x1b[0m' + 'The value you have entered is incorrect')
         else:
             for piece in board.coordinates :
                 if piece[1][0]== int(selectedPiece[1]) - 1 and piece[1][1]==ord(selectedPiece[0]) - 65:
                     if [int(selectedCoord[1]) - 1, ord(selectedCoord[0]) - 65] not in piece[0].moveList(int(selectedPiece[1]) - 1, ord(selectedPiece[0]) - 65, board):
                         print(piece[0].availableMoves)
                         board.update()
-                        print("This move is not authorized", end='')
+                        print('\33[93m' + '|!| ' + '\x1b[0m' + 'This move is not allowed', end='')
                     else:
                         piece[0].hasMoved = True
                         correctInputCoord=True #Tells the program that the input was correctly executed
