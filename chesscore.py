@@ -1,6 +1,9 @@
 class Board(object) :
     coordinates = []
     currentPlayerIsOne = False
+    whiteChecked = False
+    blackChecked = False
+
     def __init__(self):
         self.clear()
 
@@ -32,7 +35,10 @@ class Board(object) :
                 if count == 8:
                     print("|")
         print("     —————————————————————————————————————————————————")
-
+        if self.whiteChecked ==  True:
+            print('\x1b[0m' + '\33[91m' + 'White King' + '\x1b[0m' + ' is in check!')
+        elif self.blackChecked == True:
+            print('\x1b[0m' + '\33[94m' + 'Black King' + '\x1b[0m' + ' is in check!')
 
     def fetch(self):#Updates the display board relative to the coordinates table
         self.clear()
@@ -63,8 +69,7 @@ class Board(object) :
         for piece in self.coordinates:
             if piece[1][0] == selectedPieceX and piece[1][1] == selectedPieceY:
                 if piece[0].moveList(selectedPieceX, selectedPieceY, boardName) == []:
-                    if piece[0].capturePossible == []:
-                        return True
+                    return True
 
 class Piece(object) :
     hasMoved = False
@@ -593,3 +598,20 @@ class supervisor() :
                 elif promoInput == "2":
                     piece[0] = Knight(piece[0].color)
                     piece[0].hasMoved = True
+
+    def isCheck(self, boardName):
+        boardName.whiteChecked = False
+        boardName.blackChecked = False
+        for king in boardName.coordinates:
+            if king[0].name == "King" and king[0].color == "White":
+                for piece in boardName.coordinates:
+                    if piece[0].color == "Black":
+                        for pos in piece[0].moveList(piece[1][0], piece[1][1], boardName):
+                            if pos == [king[1][0], king[1][1]]:
+                                boardName.whiteChecked = True
+            elif king[0].name == "King" and king[0].color == "Black":
+                for piece in boardName.coordinates:
+                    if piece[0].color == "White":
+                        for pos in piece[0].moveList(piece[1][0], piece[1][1], boardName):
+                            if pos == [king[1][0], king[1][1]]:
+                                boardName.blackChecked = True

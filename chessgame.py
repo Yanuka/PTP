@@ -91,6 +91,7 @@ while gameEnded != True: #Plays the game until the game is ended
             piece[0].hasMoved = True
             piece[0].movePiece(selectedPieceX,selectedPieceY,selectedCoordX,selectedCoordY,board)
             supervisor.promotion(board)
+            supervisor.isCheck(board)
 
 
 
