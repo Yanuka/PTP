@@ -200,7 +200,7 @@ class King(Piece) :
                     self.capturePossible += [[actualCoordX, actualCoordY - 1]]
 
         for i in range(len(self.availableMoves) - 1,-1,-1):
-            if self.availableMoves[i][0] not in range(0,7) or self.availableMoves[i][1] not in range(0,7):
+            if self.availableMoves[i][0] not in range(0,8) or self.availableMoves[i][1] not in range(0,8):
                 self.availableMoves.remove(self.availableMoves[i])
         #MANQUE LE ROCK
         return self.availableMoves
