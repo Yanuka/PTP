@@ -231,11 +231,89 @@ class Queen(Piece) :
 
 class Bishop(Piece) :
     def __init__(self,color):
+        self.capturePossible = []
+        self.availableMoves = []
         self.color=color
         if self.color == "White":
             self.displayCharacter = '\33[91m' + 'B' + '\x1b[0m'
         elif self.color == "Black":
             self.displayCharacter = '\33[94m' + 'B' + '\x1b[0m'
+
+    def moveList(self, actualCoordX, actualCoordY, boardName):
+        limit = [0,0,0,0]
+        limit2 = [7,7,7,7]
+        limitCondtion = [False, False, False, False]
+        self.availableMoves = []
+        self.capturePossible = []
+
+        for i in range(0, 7):
+            if actualCoordX + i >= 7 or actualCoordY + i >= 7:
+                if limitCondtion[0] == False:
+                    limit[0] = i
+                    limitCondtion[0] = True
+            if actualCoordX - i <= 0 or actualCoordY + i >= 7:
+                if limitCondtion[1] == False:
+                    limit[1] = i
+                    limitCondtion[1] = True
+            if actualCoordX - i <= 0 or actualCoordY - i <= 0:
+                if limitCondtion[2] == False:
+                    limit[2] = i
+                    limitCondtion[2] = True
+            if actualCoordX + i >= 7 or actualCoordY - i <= 0:
+                if limitCondtion[3] == False:
+                    limit[3] = i
+                    limitCondtion[3] = True
+
+        for i in range(1, 7):
+            for piece in boardName.coordinates:
+                if piece[1][0] == actualCoordX + i and piece[1][1] == actualCoordY + i:
+                    if limit2[0] == 7:
+                        if self.color == piece[0].color:
+                            limit2[0] = i - 1
+                        else:
+                            limit2[0] = i
+                            self.capturePossible += [piece[1][0], piece[1][1]]
+                if piece[1][0] == actualCoordX - i and piece[1][1] == actualCoordY + i:
+                    if limit2[1] == 7:
+                        if self.color == piece[0].color:
+                            limit2[1] = i - 1
+                        else:
+                            limit2[1] = i
+                            self.capturePossible += [piece[1][0], piece[1][1]]
+                if piece[1][0] == actualCoordX - i and piece[1][1] == actualCoordY - i:
+                    if limit2[2] == 7:
+                        if self.color == piece[0].color:
+                            limit2[2] = i - 1
+                        else:
+                            limit2[2] = i
+                            self.capturePossible += [piece[1][0], piece[1][1]]
+                if piece[1][0] == actualCoordX + i and piece[1][1] == actualCoordY - i:
+                    print("test")
+                    if limit2[3] == 7:
+                        if self.color == piece[0].color:
+                            limit2[3] = i - 1
+                        else:
+                            limit2[3] = i
+                            self.capturePossible += [piece[1][0], piece[1][1]]
+
+        for i in range(4):
+            if limit2[i] < limit[i]:
+                limit[i] = limit2[i]
+
+        input(limit)
+
+        for j in range(0, limit[0]):
+            self.availableMoves += [[actualCoordY + j, actualCoordX + j]]
+        for j in range(0, limit[1]):
+            self.availableMoves += [[actualCoordY + j, actualCoordX - j]]
+        for j in range(0, limit[2]):
+            self.availableMoves += [[actualCoordY - j, actualCoordX - j]]
+        for j in range(0, limit[3]):
+            self.availableMoves += [[actualCoordY - j, actualCoordX + j]]
+
+        input(self.availableMoves)
+        return self.availableMoves
+
 
 
 class Knight(Piece) :
