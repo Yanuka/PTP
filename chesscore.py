@@ -63,10 +63,13 @@ class Board(object) :
         for piece in self.coordinates:
             if piece[1][0] == selectedPieceX and piece[1][1] == selectedPieceY:
                 if piece[0].moveList(selectedPieceX, selectedPieceY, boardName) == []:
-                    return True
+                    if piece[0].capturePossible == []:
+                        return True
 
 class Piece(object) :
     hasMoved = False
+    capturePossible = []
+    availableMoves = []
 
     def movePiece(self,actualCoordX,actualCoordY,destinationCoordX,destinationCoordY,boardName):
         for piece in boardName.coordinates:
@@ -77,8 +80,7 @@ class Piece(object) :
 
 class Pawn(Piece) :
     def __init__(self, color):
-        self.capturePossible = []
-        self.availableMoves = []
+        self.name = "Pawn"
         self.color = color
         if self.color == "White":
             self.displayCharacter = '\33[91m' + 'P' + '\x1b[0m'
@@ -134,17 +136,21 @@ class Pawn(Piece) :
                         self.availableMoves += [[actualCoordX - 1, actualCoordY - 1]]
                         self.capturePossible += [[actualCoordX - 1, actualCoordY - 1]]
 
+        for i in range(len(self.availableMoves) - 1,-1,-1):
+            if self.availableMoves[i][0] not in range(0,8) or self.availableMoves[i][1] not in range(0,8):
+                self.availableMoves.remove(self.availableMoves[i])
+
         #MANQUE LA TRANSFO EN BOUT DE LIGNE
         return self.availableMoves
 
 class King(Piece) :
     def __init__(self,color):
+        self.name = "King"
         self.color=color
         if self.color == "White":
             self.displayCharacter = '\33[91m' + 'K' + '\x1b[0m'
         elif self.color == "Black":
             self.displayCharacter = '\33[94m' + 'K' + '\x1b[0m'
-        self.capturePossible = []
 
     def moveList(self, actualCoordX, actualCoordY, boardName):
         self.availableMoves = [[actualCoordX + 1, actualCoordY], [actualCoordX + 1, actualCoordY + 1],[actualCoordX + 1, actualCoordY - 1], [actualCoordX - 1, actualCoordY],[actualCoordX - 1, actualCoordY + 1], [actualCoordX - 1, actualCoordY - 1],[actualCoordX, actualCoordY + 1], [actualCoordX, actualCoordY - 1]]
@@ -207,8 +213,7 @@ class King(Piece) :
 
 class Queen(Piece) :
     def __init__(self,color):
-        self.capturePossible = []
-        self.availableMoves = []
+        self.name = "Queen"
         self.color=color
         if self.color == "White":
             self.displayCharacter = '\33[91m' + 'Q' + '\x1b[0m'
@@ -364,8 +369,7 @@ class Queen(Piece) :
 
 class Bishop(Piece) :
     def __init__(self,color):
-        self.capturePossible = []
-        self.availableMoves = []
+        self.name = "Bishop"
         self.color=color
         if self.color == "White":
             self.displayCharacter = '\33[91m' + 'B' + '\x1b[0m'
@@ -451,8 +455,8 @@ class Bishop(Piece) :
 
 class Knight(Piece) :
     def __init__(self,color):
+        self.name = "Knight"
         self.color=color
-        self.capturePossible = []
         if self.color == "White":
             self.displayCharacter = '\33[91m' + 'N' + '\x1b[0m'
         elif self.color == "Black":
@@ -484,8 +488,7 @@ class Knight(Piece) :
 
 class Rook(Piece) :
     def __init__(self,color):
-        self.capturePossible = []
-        self.availableMoves = []
+        self.name = "Rook"
         self.color=color
         if self.color == "White":
             self.displayCharacter = '\33[91m' + 'R' + '\x1b[0m'
@@ -576,3 +579,17 @@ class supervisor() :
             if piece[1][0]==destinationCoordX and piece[1][1]==destinationCoordY:
                 boardName.coordinates.remove(piece)
                 boardName.fetch()
+
+    def promotion(self, boardName):
+        for piece in boardName.coordinates:
+            if piece[0].name == "Pawn" and (piece[1][0] == 0 or piece[1][0] == 7):
+                promoInput = input("In which piece would you like to be promoted ?\n1-Queen\n2-Knight\n")
+                while promoInput not in ["1","2"]:
+                    boardName.update()
+                    promoInput = input('\33[93m' + '|!| ' + '\x1b[0m' + "Please type a valid number!\nIn which piece would you like to be promoted ?\n1-Queen\n2-Knight\n")
+                if promoInput == "1":
+                    piece[0] = Queen(piece[0].color)
+                    piece[0].hasMoved = True
+                elif promoInput == "2":
+                    piece[0] = Knight(piece[0].color)
+                    piece[0].hasMoved = True
