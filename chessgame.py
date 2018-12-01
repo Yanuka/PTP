@@ -88,6 +88,7 @@ while gameEnded != True: #Plays the game until the game is ended
 
     for piece in board.coordinates :
         if piece[1][0]==selectedPieceX and piece[1][1]==selectedPieceY:
+            piece[0].hasMoved = True
             piece[0].movePiece(selectedPieceX,selectedPieceY,selectedCoordX,selectedCoordY,board)
 
 

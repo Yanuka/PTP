@@ -66,6 +66,8 @@ class Board(object) :
                     return True
 
 class Piece(object) :
+    hasMoved = False
+
     def movePiece(self,actualCoordX,actualCoordY,destinationCoordX,destinationCoordY,boardName):
         for piece in boardName.coordinates:
             if piece[1][0]==actualCoordX and piece[1][1]==actualCoordY:
@@ -77,7 +79,6 @@ class Pawn(Piece) :
     def __init__(self, color):
         self.capturePossible = []
         self.availableMoves = []
-        self.hasMoved = False
         self.color = color
         if self.color == "White":
             self.displayCharacter = '\33[91m' + 'P' + '\x1b[0m'
@@ -102,7 +103,6 @@ class Pawn(Piece) :
 
                 if noPieceDetected == True and self.hasMoved == False:
                     self.availableMoves += [[actualCoordX + 2, actualCoordY]]
-                    self.hasMoved = True
 
             for piece in boardName.coordinates:
                 if piece[1][0] == actualCoordX + 1 and piece[1][1] == actualCoordY + 1:
@@ -135,7 +135,6 @@ class Pawn(Piece) :
                         self.capturePossible += [[actualCoordX - 1, actualCoordY - 1]]
 
         #MANQUE LA TRANSFO EN BOUT DE LIGNE
-        self.hasMoved = True
         return self.availableMoves
 
 class King(Piece) :
@@ -298,8 +297,6 @@ class Bishop(Piece) :
             for j in range(1, limit[3]+1):
                 self.availableMoves += [[actualCoordX + j, actualCoordY - j]]
 
-        input(self.availableMoves)
-        input(self.capturePossible)
         return self.availableMoves
 
 
@@ -307,10 +304,34 @@ class Bishop(Piece) :
 class Knight(Piece) :
     def __init__(self,color):
         self.color=color
+        self.capturePossible = []
         if self.color == "White":
             self.displayCharacter = '\33[91m' + 'N' + '\x1b[0m'
         elif self.color == "Black":
             self.displayCharacter = '\33[94m' + 'N' + '\x1b[0m'
+    def moveList(self, actualCoordX, actualCoordY, boardName):
+        isEmpty = [[2,1],[2,-1],[-2,1],[-2,-1],[1,2],[1,-2],[-1,2],[-1,-2]]
+        self.availableMoves= []
+        self.capturePossible=[]
+        for square in isEmpty:
+            mateFound = False
+            for piece in boardName.coordinates:
+                if piece[1][0] == (actualCoordX+square[0]) and piece[1][1] == (actualCoordY+square[1]):
+                    if self.color != piece[0].color:
+                        self.availableMoves += [[piece[1][0],piece[1][1]]]
+                        self.capturePossible += [[piece[1][0],piece[1][1]]]
+                    else:
+                        mateFound = True
+                        if [(actualCoordX+square[0]),(actualCoordY+square[1])] in self.availableMoves:
+                            self.availableMoves.remove([(actualCoordX+square[0]),(actualCoordY+square[1])])
+                elif [actualCoordX+square[0],(actualCoordY+square[1])] not in self.availableMoves and mateFound == False :
+                    self.availableMoves += [[actualCoordX+square[0],(actualCoordY+square[1])]]
+
+        for i in range(len(self.availableMoves) - 1,-1,-1):
+            if self.availableMoves[i][0] not in range(0,8) or self.availableMoves[i][1] not in range(0,8):
+                self.availableMoves.remove(self.availableMoves[i])
+        return self.availableMoves
+
 
 
 class Rook(Piece) :
