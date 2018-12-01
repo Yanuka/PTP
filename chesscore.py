@@ -288,7 +288,6 @@ class Bishop(Piece) :
                             limit2[2] = i
                             self.capturePossible += [piece[1][0], piece[1][1]]
                 if piece[1][0] == actualCoordX + i and piece[1][1] == actualCoordY - i:
-                    print("test")
                     if limit2[3] == 7:
                         if self.color == piece[0].color:
                             limit2[3] = i - 1
@@ -301,15 +300,18 @@ class Bishop(Piece) :
                 limit[i] = limit2[i]
 
         input(limit)
-
-        for j in range(0, limit[0]):
-            self.availableMoves += [[actualCoordY + j, actualCoordX + j]]
-        for j in range(0, limit[1]):
-            self.availableMoves += [[actualCoordY + j, actualCoordX - j]]
-        for j in range(0, limit[2]):
-            self.availableMoves += [[actualCoordY - j, actualCoordX - j]]
-        for j in range(0, limit[3]):
-            self.availableMoves += [[actualCoordY - j, actualCoordX + j]]
+        if limit[0] != 0:
+            for j in range(1, limit[0]+1):
+                self.availableMoves += [[actualCoordX + j, actualCoordY + j]]
+        if limit[1] != 0:
+            for j in range(1, limit[1]+1):
+                self.availableMoves += [[actualCoordX - j, actualCoordY + j]]
+        if limit[2] != 0:
+            for j in range(1, limit[2]+1):
+                self.availableMoves += [[actualCoordX - j, actualCoordY - j]]
+        if limit[3] != 0:
+            for j in range(1, limit[3]+1):
+                self.availableMoves += [[actualCoordX + j, actualCoordY - j]]
 
         input(self.availableMoves)
         return self.availableMoves
