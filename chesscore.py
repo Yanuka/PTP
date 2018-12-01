@@ -96,56 +96,48 @@ class Pawn(Piece) :
         noPieceDetected = True
         self.availableMoves = []
         self.capturePossible = []
-
-        if self.color == "White":
+        if self.color == "Black":
+            isEmpty = [[-1,0],[-2,0],[-1,-1],[-1,1]]
             for piece in boardName.coordinates:
-                if piece[1][0] == actualCoordX + 1 and piece[1][1] == actualCoordY:
-                    noPieceDetected = False
-
-            if noPieceDetected == True:
-                self.availableMoves += [[actualCoordX + 1, actualCoordY]]
-                for piece in boardName.coordinates:
-                    if piece[1][0] == actualCoordX + 2 and piece[1][1] == actualCoordY:
+                    if piece[1][0] == actualCoordX - 1 and piece[1][1] == actualCoordY:
                         noPieceDetected = False
-
-                if noPieceDetected == True and self.hasMoved == False:
-                    self.availableMoves += [[actualCoordX + 2, actualCoordY]]
-
-            for piece in boardName.coordinates:
-                if piece[1][0] == actualCoordX + 1 and piece[1][1] == actualCoordY + 1:
-                    self.availableMoves += [[actualCoordX + 1, actualCoordY + 1]]
-                    self.capturePossible += [[actualCoordX + 1, actualCoordY + 1]]
-                elif piece[1][0] == actualCoordX + 1 and piece[1][1] == actualCoordY - 1:
-                    self.availableMoves += [[actualCoordX + 1, actualCoordY - 1]]
-                    self.capturePossible += [[actualCoordX + 1, actualCoordY - 1]]
-
-        elif self.color == "Black":
-            for piece in boardName.coordinates:
-                if piece[1][0] == actualCoordX - 1 and piece[1][1] == actualCoordY:
-                    noPieceDetected = False
-
+                    elif piece[1][0] == actualCoordX -1 and piece[1][1] == actualCoordY - 1 and piece[0].color != self.color:
+                        self.availableMoves += [[piece[1][0],piece[1][1]]]
+                        self.capturePossible += [[piece[1][0],piece[1][1]]]
+                    elif piece[1][0] == actualCoordX -1 and piece[1][1] == actualCoordY + 1 and piece[0].color != self.color:
+                        self.availableMoves += [[piece[1][0],piece[1][1]]]
+                        self.capturePossible += [[piece[1][0],piece[1][1]]]
             if noPieceDetected == True:
-                self.availableMoves += [[actualCoordX - 1, actualCoordY]]
+                self.availableMoves += [[actualCoordX - 1,actualCoordY]]
                 for piece in boardName.coordinates:
                     if piece[1][0] == actualCoordX - 2 and piece[1][1] == actualCoordY:
                         noPieceDetected = False
-
                 if noPieceDetected == True and self.hasMoved == False:
-                    self.availableMoves += [[actualCoordX - 2, actualCoordY]]
-
+                    self.availableMoves += [[actualCoordX - 2,actualCoordY]]
+        else:
+            for piece in boardName.coordinates:
+                    if piece[1][0] == actualCoordX + 1 and piece[1][1] == actualCoordY:
+                        noPieceDetected = False
+                    elif piece[1][0] == actualCoordX + 1 and piece[1][1] == actualCoordY - 1 and piece[0].color != self.color:
+                        self.availableMoves += [[piece[1][0],piece[1][1]]]
+                        self.capturePossible += [[piece[1][0],piece[1][1]]]
+                    elif piece[1][0] == actualCoordX + 1 and piece[1][1] == actualCoordY + 1 and piece[0].color != self.color:
+                        self.availableMoves += [[piece[1][0],piece[1][1]]]
+                        self.capturePossible += [[piece[1][0],piece[1][1]]]
+            if noPieceDetected == True:
+                self.availableMoves += [[actualCoordX + 1,actualCoordY]]
                 for piece in boardName.coordinates:
-                    if piece[1][0] == actualCoordX - 1 and piece[1][1] == actualCoordY + 1:
-                        self.availableMoves += [[actualCoordX - 1, actualCoordY + 1]]
-                        self.capturePossible += [[actualCoordX - 1, actualCoordY + 1]]
-                    elif piece[1][0] == actualCoordX - 1 and piece[1][1] == actualCoordY - 1:
-                        self.availableMoves += [[actualCoordX - 1, actualCoordY - 1]]
-                        self.capturePossible += [[actualCoordX - 1, actualCoordY - 1]]
+                    if piece[1][0] == actualCoordX + 2 and piece[1][1] == actualCoordY:
+                        noPieceDetected = False
+                if noPieceDetected == True and self.hasMoved == False:
+                    self.availableMoves += [[actualCoordX + 2,actualCoordY]]
+
+
 
         for i in range(len(self.availableMoves) - 1,-1,-1):
             if self.availableMoves[i][0] not in range(0,8) or self.availableMoves[i][1] not in range(0,8):
                 self.availableMoves.remove(self.availableMoves[i])
 
-        #MANQUE LA TRANSFO EN BOUT DE LIGNE
         return self.availableMoves
 
 class King(Piece) :
