@@ -272,34 +272,33 @@ class Bishop(Piece) :
                             limit2[0] = i - 1
                         else:
                             limit2[0] = i
-                            self.capturePossible += [piece[1][0], piece[1][1]]
+                            self.capturePossible += [[piece[1][0], piece[1][1]]]
                 if piece[1][0] == actualCoordX - i and piece[1][1] == actualCoordY + i:
                     if limit2[1] == 7:
                         if self.color == piece[0].color:
                             limit2[1] = i - 1
                         else:
                             limit2[1] = i
-                            self.capturePossible += [piece[1][0], piece[1][1]]
+                            self.capturePossible += [[piece[1][0], piece[1][1]]]
                 if piece[1][0] == actualCoordX - i and piece[1][1] == actualCoordY - i:
                     if limit2[2] == 7:
                         if self.color == piece[0].color:
                             limit2[2] = i - 1
                         else:
                             limit2[2] = i
-                            self.capturePossible += [piece[1][0], piece[1][1]]
+                            self.capturePossible += [[piece[1][0], piece[1][1]]]
                 if piece[1][0] == actualCoordX + i and piece[1][1] == actualCoordY - i:
                     if limit2[3] == 7:
                         if self.color == piece[0].color:
                             limit2[3] = i - 1
                         else:
                             limit2[3] = i
-                            self.capturePossible += [piece[1][0], piece[1][1]]
+                            self.capturePossible += [[piece[1][0], piece[1][1]]]
 
         for i in range(4):
             if limit2[i] < limit[i]:
                 limit[i] = limit2[i]
 
-        input(limit)
         if limit[0] != 0:
             for j in range(1, limit[0]+1):
                 self.availableMoves += [[actualCoordX + j, actualCoordY + j]]
@@ -314,6 +313,7 @@ class Bishop(Piece) :
                 self.availableMoves += [[actualCoordX + j, actualCoordY - j]]
 
         input(self.availableMoves)
+        input(self.capturePossible)
         return self.availableMoves
 
 
