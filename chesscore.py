@@ -150,23 +150,6 @@ class King(Piece) :
     def moveList(self, actualCoordX, actualCoordY, boardName):
         self.availableMoves = [[actualCoordX + 1, actualCoordY], [actualCoordX + 1, actualCoordY + 1],[actualCoordX + 1, actualCoordY - 1], [actualCoordX - 1, actualCoordY],[actualCoordX - 1, actualCoordY + 1], [actualCoordX - 1, actualCoordY - 1],[actualCoordX, actualCoordY + 1], [actualCoordX, actualCoordY - 1]]
 
-        if actualCoordX + 1 not in range(0,7) or actualCoordY + 1 not in range(0,7):
-            self.availableMoves.remove([actualCoordX + 1, actualCoordY + 1])
-        if actualCoordX + 1 not in range(0,7) or actualCoordY - 1 not in range(0,7):
-            self.availableMoves.remove([actualCoordX + 1, actualCoordY] - 1)
-        if actualCoordX - 1 not in range(0,7) or actualCoordY + 1 not in range(0,7):
-            self.availableMoves.remove([actualCoordX - 1, actualCoordY + 1])
-        if actualCoordX - 1 not in range(0,7) or actualCoordY - 1 not in range(0,7):
-            self.availableMoves.remove([actualCoordX - 1, actualCoordY - 1])
-        if actualCoordX not in range(0,7) or actualCoordY + 1 not in range(0,7):
-            self.availableMoves.remove([actualCoordX, actualCoordY + 1])
-        if actualCoordX not in range(0,7) or actualCoordY - 1 not in range(0,7):
-            self.availableMoves.remove([actualCoordX, actualCoordY - 1])
-        if actualCoordX + 1 not in range(0,7) or actualCoordY not in range(0,7):
-            self.availableMoves.remove([actualCoordX + 1, actualCoordY])
-        if actualCoordX - 1 not in range(0,7) or actualCoordY not in range(0,7):
-            self.availableMoves.remove([actualCoordX - 1, actualCoordY])
-
         for piece in boardName.coordinates:
             if piece[1][0] == actualCoordX + 1 and piece[1][1] == actualCoordY:
                 if piece[0].color == self.color:
@@ -216,6 +199,9 @@ class King(Piece) :
                 elif piece[0].color != self.color:
                     self.capturePossible += [[actualCoordX, actualCoordY - 1]]
 
+        for i in range(len(self.availableMoves) - 1,-1,-1):
+            if self.availableMoves[i][0] not in range(0,7) or self.availableMoves[i][1] not in range(0,7):
+                self.availableMoves.remove(self.availableMoves[i])
         #MANQUE LE ROCK
         return self.availableMoves
 
