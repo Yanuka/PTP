@@ -224,7 +224,7 @@ class Queen(Piece) :
         self.availableMoves = []
         self.capturePossible = []
 
-        for i in range(0, 7):
+        for i in range(0, 8):
             if actualCoordX + i >= 7 or actualCoordY + i >= 7:
                 if limitCondtion[0] == False:
                     limit[0] = i
@@ -380,7 +380,7 @@ class Bishop(Piece) :
         self.availableMoves = []
         self.capturePossible = []
 
-        for i in range(0, 7):
+        for i in range(0, 8):
             if actualCoordX + i >= 7 or actualCoordY + i >= 7:
                 if limitCondtion[0] == False:
                     limit[0] = i
