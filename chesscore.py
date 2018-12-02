@@ -19,7 +19,7 @@ class Board(object) :
             print('Player ' + '\33[91m' + '1' + '\x1b[0m' + '\'s turn')
             print()
         else:
-            print('Player ' + '\33[94m' + '2' + '\x1b[0m' + '\'s turn')
+            print('Player ' + '\33[1;36;40m' + '2' + '\x1b[0m' + '\'s turn')
             print()
         print("        A     B     C     D     E     F     G     H")
         coordName = 1
@@ -37,8 +37,8 @@ class Board(object) :
         print("     —————————————————————————————————————————————————")
         if self.whiteChecked ==  True:
             print('\x1b[0m' + '\33[91m' + 'White King' + '\x1b[0m' + ' is in check!')
-        elif self.blackChecked == True:
-            print('\x1b[0m' + '\33[94m' + 'Black King' + '\x1b[0m' + ' is in check!')
+        if self.blackChecked == True:
+            print('\x1b[0m' + '\33[1;36;40m' + 'Black King' + '\x1b[0m' + ' is in check!')
 
     def fetch(self):#Updates the display board relative to the coordinates table
         self.clear()
@@ -90,7 +90,7 @@ class Pawn(Piece) :
         if self.color == "White":
             self.displayCharacter = '\33[91m' + 'P' + '\x1b[0m'
         elif self.color == "Black":
-            self.displayCharacter = '\33[94m' + 'P' + '\x1b[0m'
+            self.displayCharacter = '\33[1;36;40m' + 'P' + '\x1b[0m'
 
     def moveList(self, actualCoordX, actualCoordY, boardName):
         noPieceDetected = True
@@ -147,7 +147,7 @@ class King(Piece) :
         if self.color == "White":
             self.displayCharacter = '\33[91m' + 'K' + '\x1b[0m'
         elif self.color == "Black":
-            self.displayCharacter = '\33[94m' + 'K' + '\x1b[0m'
+            self.displayCharacter = '\33[1;36;40m' + 'K' + '\x1b[0m'
 
     def moveList(self, actualCoordX, actualCoordY, boardName):
         self.availableMoves = [[actualCoordX + 1, actualCoordY], [actualCoordX + 1, actualCoordY + 1],[actualCoordX + 1, actualCoordY - 1], [actualCoordX - 1, actualCoordY],[actualCoordX - 1, actualCoordY + 1], [actualCoordX - 1, actualCoordY - 1],[actualCoordX, actualCoordY + 1], [actualCoordX, actualCoordY - 1]]
@@ -215,7 +215,7 @@ class Queen(Piece) :
         if self.color == "White":
             self.displayCharacter = '\33[91m' + 'Q' + '\x1b[0m'
         elif self.color == "Black":
-            self.displayCharacter = '\33[94m' + 'Q' + '\x1b[0m'
+            self.displayCharacter = '\33[1;36;40m' + 'Q' + '\x1b[0m'
 
     def moveList(self, actualCoordX, actualCoordY, boardName):
         limit = [0,0,0,0]
@@ -371,7 +371,7 @@ class Bishop(Piece) :
         if self.color == "White":
             self.displayCharacter = '\33[91m' + 'B' + '\x1b[0m'
         elif self.color == "Black":
-            self.displayCharacter = '\33[94m' + 'B' + '\x1b[0m'
+            self.displayCharacter = '\33[1;36;40m' + 'B' + '\x1b[0m'
 
     def moveList(self, actualCoordX, actualCoordY, boardName):
         limit = [0,0,0,0]
@@ -457,7 +457,7 @@ class Knight(Piece) :
         if self.color == "White":
             self.displayCharacter = '\33[91m' + 'N' + '\x1b[0m'
         elif self.color == "Black":
-            self.displayCharacter = '\33[94m' + 'N' + '\x1b[0m'
+            self.displayCharacter = '\33[1;36;40m' + 'N' + '\x1b[0m'
     def moveList(self, actualCoordX, actualCoordY, boardName):
         isEmpty = [[2,1],[2,-1],[-2,1],[-2,-1],[1,2],[1,-2],[-1,2],[-1,-2]]
         self.availableMoves= []
@@ -490,7 +490,7 @@ class Rook(Piece) :
         if self.color == "White":
             self.displayCharacter = '\33[91m' + 'R' + '\x1b[0m'
         elif self.color == "Black":
-            self.displayCharacter = '\33[94m' + 'R' + '\x1b[0m'
+            self.displayCharacter = '\33[1;36;40m' + 'R' + '\x1b[0m'
 
     def moveList(self, actualCoordX, actualCoordY, boardName):
         limit = [0,0,0,0]
@@ -607,3 +607,11 @@ class supervisor() :
                         for pos in piece[0].moveList(piece[1][0], piece[1][1], boardName):
                             if pos == [king[1][0], king[1][1]]:
                                 boardName.blackChecked = True
+
+    def isPat(self, boardName):
+        if boardName.whiteChecked == True:
+            #do stuff
+            pass
+        elif boardName.blackChecked == True:
+            #do stuff
+            pass
