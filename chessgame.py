@@ -86,16 +86,16 @@ while gameEnded != True: #Plays the game until the game is ended
             for castle in piece[0].castleMoves:
                 for rook in board.coordinates:
                     if rook[0].color == "White" and rook[1][1] == 7 and rook[0].name == "Rook" and piece[0].color == "White":
-                        if castle[1] == selectedCoordY:
+                        if castle[1] == selectedCoordY and selectedCoordY == 6:
                             rook[1][1] = 5
                     elif rook[0].color == "White" and rook[1][1] == 0 and rook[0].name == "Rook" and piece[0].color == "White":
-                        if castle[1] == selectedCoordY:
+                        if castle[1] == selectedCoordY and selectedCoordY == 2:
                             rook[1][1] = 3
                     if rook[0].color == "Black" and rook[1][1] == 7 and rook[0].name == "Rook" and piece[0].color == "Black":
-                        if castle[1] == selectedCoordY:
+                        if castle[1] == selectedCoordY and selectedCoordY == 6:
                             rook[1][1] = 5
                     elif rook[0].color == "Black" and rook[1][1] == 0 and rook[0].name == "Rook" and piece[0].color == "Black":
-                        if castle[1] == selectedCoordY:
+                        if castle[1] == selectedCoordY and selectedCoordY == 2:
                             rook[1][1] = 3
 
     pieceCaptured = False

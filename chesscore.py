@@ -169,26 +169,26 @@ class King(Piece) :
                 elif [currentCoordX+square[0],(currentCoordY+square[1])] not in self.availableMoves and mateFound == False :
                     self.availableMoves += [[currentCoordX+square[0],(currentCoordY+square[1])]]
 
-        piecesInBetween = [False, False]
         if self.hasMoved == False:
             for rook in boardName.coordinates:
+                piecesInBetween = [False, False]
                 if rook[0].name == "Rook" and rook[0].hasMoved == False:
                     for piece in boardName.coordinates:
                         if piece[1][1] == currentCoordY + 1 and piece[1][0] == currentCoordX or piece[1][1] == currentCoordY + 2 and piece[1][0] == currentCoordX:
                             piecesInBetween[0] = True
                         if piece[1][1] == currentCoordY - 1 and piece[1][0] == currentCoordX or piece[1][1] == currentCoordY - 2 and piece[1][0] == currentCoordX or piece[1][1] == currentCoordY - 3 and piece[1][0] == currentCoordX:
                             piecesInBetween[1] = True
-                    if piecesInBetween[0] == False and rook[1][1] == currentCoordY + 3:
+                    if piecesInBetween[0] == False and rook[1][1] == currentCoordY + 3 and [currentCoordX,currentCoordY+2] not in self.availableMoves:
                         self.availableMoves += [[currentCoordX,currentCoordY+2]]
                         self.castleMoves += [[currentCoordX,currentCoordY+2]]
-                    if piecesInBetween[1] == False and rook[1][1] == currentCoordY - 4:
+                    if piecesInBetween[1] == False and rook[1][1] == currentCoordY - 4 and [currentCoordX,currentCoordY-2] not in self.availableMoves:
                         self.availableMoves += [[currentCoordX,currentCoordY-2]]
                         self.castleMoves += [[currentCoordX,currentCoordY-2]]
 
         for i in range(len(self.availableMoves) - 1,-1,-1):
             if self.availableMoves[i][0] not in range(0,8) or self.availableMoves[i][1] not in range(0,8):
                 self.availableMoves.remove(self.availableMoves[i])
-        input(self.availableMoves)
+                
         return self.availableMoves
 
 
