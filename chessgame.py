@@ -56,7 +56,7 @@ while gameEnded != True: #Plays the game until the game is ended
                     pieceInputColor = '\33[91m' + pieceInputName + ' ' + selectedPiece + '\x1b[0m'
                 else:
                     pieceInputColor = '\33[1;36;40m' + pieceInputName + ' ' + selectedPiece + '\x1b[0m'
-        selectedCoord = input('\n('+ pieceInputColor + ')' + "Select the square of where you want to move it to : ") #Gets the destination square
+        selectedCoord = input('\n('+ pieceInputColor + ') ' + "Select the square of where you want to move it to : ") #Gets the destination square
         selectedCoord = selectedCoord.capitalize() #Forces the capitalization of the letter
 
         if len(selectedCoord)!=2 : #Checks if the the length is correct
