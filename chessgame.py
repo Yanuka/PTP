@@ -49,7 +49,14 @@ while gameEnded != True: #Plays the game until the game is ended
     board.update() #Updates the board
 
     while correctInputCoord==False :
-        selectedCoord = input("\nSelect the square of where you want to move it to : ") #Gets the destination square
+        for piece in board.coordinates:
+            if piece[1][0] == int(selectedPiece[1]) - 1 and piece[1][1] == ord(selectedPiece[0]) - 65:
+                pieceInputName = piece[0].name
+                if piece[0].color == 'White':
+                    pieceInputColor = '\33[91m' + pieceInputName + ' ' + selectedPiece + '\x1b[0m'
+                else:
+                    pieceInputColor = '\33[1;36;40m' + pieceInputName + ' ' + selectedPiece + '\x1b[0m'
+        selectedCoord = input('\n('+ pieceInputColor + ')' + "Select the square of where you want to move it to : ") #Gets the destination square
         selectedCoord = selectedCoord.capitalize() #Forces the capitalization of the letter
 
         if len(selectedCoord)!=2 : #Checks if the the length is correct
