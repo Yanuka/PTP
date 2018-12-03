@@ -81,6 +81,23 @@ while gameEnded != True: #Plays the game until the game is ended
     selectedCoordY = ord(selectedCoord[0]) - 65 #Converts the selected coordinates into Y coordinates
     selectedCoordX = int(selectedCoord[1]) - 1 #Converts the selected coordinates into X coordinates
 
+    for piece in board.coordinates :
+        if piece[1][0]==selectedPieceX and piece[1][1]==selectedPieceY:
+            for castle in piece[0].castleMoves:
+                for rook in board.coordinates:
+                    if rook[0].color == "White" and rook[1][1] == 7 and rook[0].name == "Rook" and piece[0].color == "White":
+                        if castle[1] == selectedCoordY:
+                            rook[1][1] = 5
+                    elif rook[0].color == "White" and rook[1][1] == 0 and rook[0].name == "Rook" and piece[0].color == "White":
+                        if castle[1] == selectedCoordY:
+                            rook[1][1] = 3
+                    if rook[0].color == "Black" and rook[1][1] == 7 and rook[0].name == "Rook" and piece[0].color == "Black":
+                        if castle[1] == selectedCoordY:
+                            rook[1][1] = 5
+                    elif rook[0].color == "Black" and rook[1][1] == 0 and rook[0].name == "Rook" and piece[0].color == "Black":
+                        if castle[1] == selectedCoordY:
+                            rook[1][1] = 3
+
     pieceCaptured = False
     for piece in board.coordinates : #Moves the selected piece
         if pieceCaptured == True :
