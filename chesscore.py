@@ -133,8 +133,6 @@ class Pawn(Piece) :
                 if noPieceDetected == True and self.hasMoved == False:
                     self.availableMoves += [[currentCoordX + 2,currentCoordY]]
 
-
-
         for i in range(len(self.availableMoves) - 1,-1,-1):
             if self.availableMoves[i][0] not in range(0,8) or self.availableMoves[i][1] not in range(0,8):
                 self.availableMoves.remove(self.availableMoves[i])
@@ -188,9 +186,8 @@ class King(Piece) :
         for i in range(len(self.availableMoves) - 1,-1,-1):
             if self.availableMoves[i][0] not in range(0,8) or self.availableMoves[i][1] not in range(0,8):
                 self.availableMoves.remove(self.availableMoves[i])
-                
-        return self.availableMoves
 
+        return self.availableMoves
 
 class Queen(Piece) :
     def __init__(self,color):
@@ -296,7 +293,6 @@ class Queen(Piece) :
                     limit[3] = i
                     limitCondtion[3] = True
 
-
         for i in range(1, 7):
             for piece in boardName.coordinates:
                 if piece[1][0] == currentCoordX + i and piece[1][1] == currentCoordY:
@@ -346,7 +342,6 @@ class Queen(Piece) :
                 self.availableMoves += [[currentCoordX, currentCoordY - j]]
 
         return self.availableMoves
-
 
 class Bishop(Piece) :
     def __init__(self,color):
@@ -432,8 +427,6 @@ class Bishop(Piece) :
 
         return self.availableMoves
 
-
-
 class Knight(Piece) :
     def __init__(self,color):
         self.name = "Knight"
@@ -464,8 +457,6 @@ class Knight(Piece) :
             if self.availableMoves[i][0] not in range(0,8) or self.availableMoves[i][1] not in range(0,8):
                 self.availableMoves.remove(self.availableMoves[i])
         return self.availableMoves
-
-
 
 class Rook(Piece) :
     def __init__(self,color):
@@ -500,7 +491,6 @@ class Rook(Piece) :
                 if limitCondtion[3] == False:
                     limit[3] = i
                     limitCondtion[3] = True
-
 
         for i in range(1, 7):
             for piece in boardName.coordinates:
@@ -551,7 +541,6 @@ class Rook(Piece) :
                 self.availableMoves += [[currentCoordX, currentCoordY - j]]
 
         return self.availableMoves
-
 
 class supervisor() :
 

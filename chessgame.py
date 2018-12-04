@@ -117,6 +117,4 @@ while gameEnded != True: #Plays the game until the game is ended
             supervisor.promotion(board)
             supervisor.isCheck(board)
 
-
-
     print("\033[H\033[J") #Clears the board
